@@ -180,9 +180,23 @@
     text-transform: uppercase;
   }
 
-  /* Refined accent gradient - subtle teal */
+  /* Headline accent — peach → orange (reference hero style) */
+  .text-gradient-headline {
+    background: linear-gradient(90deg, #FFB38E 0%, #F0932B 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .heading-title-base {
+    color: hsl(var(--foreground));
+  }
+  .dark .heading-title-base,
+  .core-services-section .heading-title-base,
+  .works-section .heading-title-base {
+    color: #ffffff;
+  }
   .text-gradient-accent {
-    background: linear-gradient(135deg, hsl(195 65% 45%), hsl(188 70% 55%));
+    background: linear-gradient(90deg, #FFB38E 0%, #F0932B 100%);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
@@ -800,13 +814,8 @@
       </div>
 
       <h1 class="heading-hero mt-5">
-        Build faster,<br/>
-        <span class="relative inline-block">
-          <span class="relative z-10">and scale better.</span>
-          <svg class="absolute -bottom-1 left-0 w-full h-3 z-0" viewBox="0 0 200 12" preserveAspectRatio="none" fill="none">
-            <path d="M2 8 Q 50 2, 100 6 T 198 4" stroke="currentColor" stroke-width="6" stroke-linecap="round" opacity="0.15"/>
-          </svg>
-        </span>
+        <span class="heading-title-base">Build faster,</span><br/>
+        <span class="text-gradient-headline">and scale better.</span>
       </h1>
 
       <p class="mt-6 max-w-xl mx-auto text-base sm:text-lg text-muted-foreground leading-relaxed">
@@ -1018,7 +1027,8 @@
         ( DỊCH VỤ CỐT LÕI )
       </div>
       <h2 class="heading-section uppercase">
-        Giải pháp AI giải quyết<br/>vấn đề thực của doanh nghiệp
+        <span class="heading-title-base">Giải pháp AI giải quyết</span><br/>
+        <span class="text-gradient-headline">vấn đề thực của doanh nghiệp</span>
         <span class="inline-flex items-center justify-center w-6 h-6 sm:w-7 sm:h-7 rounded-full border border-white/30 ml-2 align-middle">
           <span class="w-1 h-1 rounded-full bg-white"></span>
         </span>
@@ -1033,7 +1043,8 @@
         <div class="core-service-grid">
           <div>
             <h3 class="heading-block uppercase">
-              Website<br/>Chuyển đổi
+              <span class="heading-title-base">Website</span><br/>
+              <span class="text-gradient-headline">Chuyển đổi</span>
             </h3>
           </div>
           <div>
@@ -1065,7 +1076,8 @@
         <div class="core-service-grid">
           <div>
             <h3 class="heading-block uppercase">
-              AI Marketing<br/>Tổng thể
+              <span class="heading-title-base">AI Marketing</span><br/>
+              <span class="text-gradient-headline">Tổng thể</span>
             </h3>
           </div>
           <div>
@@ -1098,7 +1110,8 @@
         <div class="core-service-grid">
           <div>
             <h3 class="heading-block uppercase">
-              AI Agent<br/>Tự động hóa
+              <span class="heading-title-base">AI Agent</span><br/>
+              <span class="text-gradient-headline">Tự động hóa</span>
             </h3>
           </div>
           <div>
@@ -1132,7 +1145,8 @@
         <div class="core-service-grid">
           <div>
             <h3 class="heading-block uppercase">
-              Phát triển<br/>AI &amp; Agent tùy chỉnh
+              <span class="heading-title-base">Phát triển</span><br/>
+              <span class="text-gradient-headline">AI &amp; Agent tùy chỉnh</span>
             </h3>
           </div>
           <div>
@@ -1172,7 +1186,8 @@
         Quy trình minh bạch
       </div>
       <h2 class="heading-section">
-        From idea to launch<br/>in 30 days
+        <span class="heading-title-base">From idea to launch</span><br/>
+        <span class="text-gradient-headline">in 30 days</span>
       </h2>
       <p class="mt-4 text-base sm:text-lg text-muted-foreground">
         30 ngày — deliverables rõ từng tuần, bạn luôn nắm tiến độ.
@@ -1282,7 +1297,8 @@
       <div>
         <p class="works-eyebrow">( DỰ ÁN TIÊU BIỂU )</p>
         <h2 class="heading-section uppercase max-w-2xl">
-          Đồng hành thay đổi có ý nghĩa
+          <span class="heading-title-base">Đồng hành </span>
+          <span class="text-gradient-headline">thay đổi có ý nghĩa</span>
         </h2>
       </div>
       <a href="#case-studies" class="works-view-all">
@@ -1304,7 +1320,10 @@
       <div id="works-website" data-animate="fade-up" class="works-row">
         <div class="works-col works-col-info">
           <p class="works-label">Website chuyển đổi</p>
-          <h3 class="works-title">Website Next.js chuẩn SEO cho thương hiệu du lịch</h3>
+          <h3 class="works-title">
+            <span class="heading-title-base">Website Next.js chuẩn SEO </span>
+            <span class="text-gradient-headline">cho thương hiệu du lịch</span>
+          </h3>
           <p class="works-desc">Xây <strong>landing chuyển đổi</strong> tối ưu tốc độ &amp; AI-friendly — thay WordPress chậm bằng stack <strong>load dưới 1 giây</strong>.</p>
         </div>
         <div class="works-col works-col-visual">
@@ -1333,7 +1352,10 @@
       <div id="works-marketing" data-animate="fade-up" class="works-row">
         <div class="works-col works-col-info">
           <p class="works-label">AI Marketing</p>
-          <h3 class="works-title">Chiến dịch content AI cho thương hiệu FMCG</h3>
+          <h3 class="works-title">
+            <span class="heading-title-base">Chiến dịch content AI </span>
+            <span class="text-gradient-headline">cho thương hiệu FMCG</span>
+          </h3>
           <p class="works-desc"><strong>Master Plan 3 tháng</strong> + 16 assets AI đồng bộ thương hiệu — giảm phụ thuộc team inhouse.</p>
         </div>
         <div class="works-col works-col-visual">
@@ -1362,7 +1384,10 @@
       <div id="works-agent" data-animate="fade-up" class="works-row">
         <div class="works-col works-col-info">
           <p class="works-label">AI Agent</p>
-          <h3 class="works-title">Agent chăm sóc khách hàng 24/7 cho doanh nghiệp fintech</h3>
+          <h3 class="works-title">
+            <span class="heading-title-base">Agent chăm sóc khách hàng 24/7 </span>
+            <span class="text-gradient-headline">cho doanh nghiệp fintech</span>
+          </h3>
           <p class="works-desc">Tự động trả lời <strong>inbox FB/Zalo</strong>, lead qualification &amp; đặt lịch — giải phóng đội CS.</p>
         </div>
         <div class="works-col works-col-visual">
@@ -1392,7 +1417,10 @@
       <div id="works-custom" data-animate="fade-up" class="works-row">
         <div class="works-col works-col-info">
           <p class="works-label">Custom AI</p>
-          <h3 class="works-title">Pipeline automation tích hợp CRM cho logistics</h3>
+          <h3 class="works-title">
+            <span class="heading-title-base">Pipeline automation tích hợp CRM </span>
+            <span class="text-gradient-headline">cho logistics</span>
+          </h3>
           <p class="works-desc">Agent + workflow <strong>tích hợp liền mạch</strong> CRM, database &amp; API — tự động báo giá &amp; tracking đơn.</p>
         </div>
         <div class="works-col works-col-visual">
@@ -1429,7 +1457,8 @@
         Tại sao chọn Wave Digital
       </div>
       <h2 class="heading-section">
-        Wave Digital vs Cách làm truyền thống
+        <span class="heading-title-base">Wave Digital vs </span>
+        <span class="text-gradient-headline">Cách làm truyền thống</span>
       </h2>
       <p class="mt-4 text-base sm:text-lg text-muted-foreground">
         So sánh thẳng thắn để bạn ra quyết định sáng suốt. Không "self-claim", chỉ con số thật.
@@ -1562,7 +1591,8 @@
           Deliverables
         </div>
         <h2 class="heading-section">
-          Master Plan 3 tháng — Kết quả bạn nhận được
+          <span class="heading-title-base">Master Plan 3 tháng — </span>
+          <span class="text-gradient-headline">Kết quả bạn nhận được</span>
         </h2>
         <p class="mt-4 text-base sm:text-lg text-muted-foreground">
           Bộ deliverables chi tiết, đo lường được, giao đúng tiến độ. Mỗi sản phẩm đầu ra đều có quality checklist và được duyệt qua quy trình review chặt chẽ trước khi bàn giao.
@@ -1639,7 +1669,8 @@
         Khách hàng tin tưởng
       </div>
       <h2 class="heading-section">
-        Doanh nghiệp đã Launching cùng Wave Digital
+        <span class="heading-title-base">Doanh nghiệp đã Launching </span>
+        <span class="text-gradient-headline">cùng Wave Digital</span>
       </h2>
       <p class="mt-4 text-base sm:text-lg text-muted-foreground">
         Hơn 100+ doanh nghiệp đã tin tưởng Wave Digital để biến ý tưởng thành sản phẩm thực tế. Đây là những gì khách hàng nói về chúng tôi.
@@ -1980,7 +2011,8 @@
           Về Wave Digital
         </div>
         <h2 class="heading-section">
-          Đơn vị tiên phong ứng dụng AI cho doanh nghiệp Việt
+          <span class="heading-title-base">Đơn vị tiên phong </span>
+          <span class="text-gradient-headline">ứng dụng AI cho doanh nghiệp Việt</span>
         </h2>
         <p class="mt-4 text-base sm:text-lg text-muted-foreground">
           Wave Digital là đội ngũ chuyên gia về công nghệ AI, Marketing và Phát triển sản phẩm. Chúng tôi giúp doanh nghiệp Việt Nam tận dụng AI để Launching sản phẩm nhanh chóng, hiệu quả và tiết kiệm chi phí.
@@ -2051,7 +2083,10 @@
         <span class="w-1 h-1 rounded-full bg-current opacity-50"></span>
         Câu hỏi thường gặp
       </div>
-      <h2 class="heading-section">Bạn còn thắc mắc gì không?</h2>
+      <h2 class="heading-section">
+        <span class="heading-title-base">Bạn còn </span>
+        <span class="text-gradient-headline">thắc mắc gì không?</span>
+      </h2>
       <p class="mt-4 text-base text-muted-foreground">Những câu hỏi phổ biến nhất từ doanh nghiệp khi tìm hiểu về gói Launching trọn bộ của Wave Digital.</p>
     </div>
 
@@ -2183,7 +2218,8 @@
     </div>
 
         <h2 class="heading-section">
-      Sẵn sàng Launching <em class="not-italic font-normal opacity-70">sản phẩm</em> của bạn?
+      <span class="heading-title-base">Sẵn sàng Launching </span>
+      <span class="text-gradient-headline">sản phẩm của bạn?</span>
     </h2>
     <p class="mt-4 text-base sm:text-lg opacity-80 max-w-2xl mx-auto">
       Đặt lịch tư vấn miễn phí 30 phút với chuyên gia Wave Digital. Chúng tôi sẽ phân tích ý tưởng của bạn và đề xuất giải pháp phù hợp nhất.
