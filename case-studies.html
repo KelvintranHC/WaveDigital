@@ -142,14 +142,95 @@
     color: hsl(var(--muted-foreground));
   }
   .cs-promo {
-    background: hsl(var(--foreground));
-    color: hsl(var(--background));
-    border-radius: 1rem; overflow: hidden; position: relative;
+    position: relative;
+    overflow: hidden;
+    border-radius: 1rem;
+    color: hsl(30 18% 96%);
+    background:
+      linear-gradient(155deg, hsl(222 38% 6%) 0%, hsl(220 32% 9%) 48%, hsl(218 28% 11%) 100%);
+    border: 1px solid hsl(30 55% 88% / 0.1);
+    box-shadow:
+      inset 0 1px 0 0 hsl(35 90% 82% / 0.14),
+      0 20px 44px -20px hsl(25 70% 35% / 0.45),
+      0 8px 24px -12px hsl(220 40% 4% / 0.5);
   }
   .cs-promo::before {
-    content: ''; position: absolute; inset: 0;
-    background: radial-gradient(ellipse 80% 60% at 100% 0%, rgba(255, 179, 142, 0.25), transparent 55%);
+    content: '';
+    position: absolute;
+    inset: 0;
     pointer-events: none;
+    background:
+      radial-gradient(ellipse 95% 75% at 108% -8%, rgba(255, 212, 188, 0.38) 0%, rgba(255, 179, 142, 0.14) 42%, transparent 68%),
+      radial-gradient(ellipse 70% 55% at -5% 105%, hsl(188 70% 48% / 0.14) 0%, transparent 58%),
+      linear-gradient(118deg, hsl(28 92% 58% / 0.2) 0%, hsl(22 78% 48% / 0.06) 38%, transparent 62%);
+    opacity: 1;
+  }
+  .cs-promo > * {
+    position: relative;
+    z-index: 1;
+  }
+  .cs-promo-badge {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.3rem 0.55rem;
+    margin-bottom: 1rem;
+    border-radius: 9999px;
+    color: hsl(32 40% 92%);
+    background: hsl(30 50% 95% / 0.08);
+    border: 1px solid hsl(35 75% 78% / 0.22);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+  .cs-promo-days {
+    display: block;
+    font-size: clamp(1.75rem, 5vw, 1.875rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    background: linear-gradient(102deg, #ffe8d8 0%, #ffd4bc 28%, #ffb38e 55%, #f5a04a 82%, #e88b2a 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 1px 12px hsl(28 85% 55% / 0.25));
+  }
+  @media (min-width: 640px) {
+    .cs-promo-days { font-size: 1.875rem; }
+  }
+  .cs-promo-desc {
+    margin-top: 0.5rem;
+    font-size: 0.875rem;
+    line-height: 1.55;
+    color: hsl(30 12% 88% / 0.82);
+  }
+  .cs-promo-cta {
+    margin-top: 1.25rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0 1rem;
+    height: 2.5rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    border-radius: 0.5rem;
+    color: hsl(220 28% 10%);
+    background: linear-gradient(180deg, hsl(30 30% 98%) 0%, hsl(30 22% 94%) 100%);
+    border: 1px solid hsl(35 60% 88% / 0.5);
+    box-shadow: 0 1px 0 0 hsl(0 0% 100% / 0.6) inset, 0 8px 20px -8px hsl(25 60% 30% / 0.35);
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  }
+  .cs-promo-cta:hover {
+    transform: translateY(-1px);
+    border-color: hsl(32 80% 72% / 0.65);
+    box-shadow:
+      0 1px 0 0 hsl(0 0% 100% / 0.65) inset,
+      0 10px 28px -6px hsl(28 75% 48% / 0.4),
+      0 0 0 1px hsl(255 179 142 / 0.2);
+  }
+  .cs-promo-cta svg {
+    color: hsl(28 85% 48%);
   }
   .cs-card.is-hidden { display: none; }
   .lang-switch { gap: 0.125rem; }
@@ -188,11 +269,11 @@
         </div>
         <div class="lg:col-span-5">
           <div class="cs-promo p-6 sm:p-7 relative">
-            <span class="inline-block text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full bg-white/15 mb-4">Gói Launching</span>
-            <p class="text-2xl sm:text-3xl font-bold tracking-tight">30 ngày</p>
-            <p class="mt-2 text-sm opacity-80 leading-relaxed">Từ idea đến go-live — Website, content AI, ads &amp; agent trong một quy trình duy nhất.</p>
-            <a href="index.html#contact" class="mt-5 inline-flex items-center gap-2 px-4 h-10 rounded-md text-sm font-medium bg-background text-foreground hover:opacity-90 transition">
-              <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"/></svg>
+            <span class="cs-promo-badge">Gói Launching</span>
+            <p class="cs-promo-days">30 ngày</p>
+            <p class="cs-promo-desc">Từ idea đến go-live — Website, content AI, ads &amp; agent trong một quy trình duy nhất.</p>
+            <a href="index.html#contact" class="cs-promo-cta">
+              <svg class="w-3.5 h-3.5 shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"/></svg>
               Đặt lịch tư vấn
             </a>
           </div>
@@ -212,7 +293,7 @@
           <button type="button" class="cs-tab" data-filter="agent" role="tab">AI Agent</button>
           <button type="button" class="cs-tab" data-filter="custom" role="tab">Custom AI</button>
         </div>
-        <div class="relative w-full lg:max-w-xs shrink-0">
+        <div class="relative w-full lg:max-w-xs shrink-0 hidden lg:block">
           <svg class="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground pointer-events-none" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
           <input type="search" id="cs-search" class="cs-search" placeholder="Tìm case study..." aria-label="Tìm case study" />
         </div>
