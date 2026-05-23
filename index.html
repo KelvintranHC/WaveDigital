@@ -49,6 +49,8 @@
     --card: 0 0% 100%;
     --accent: 195 65% 38%;
     --accent-glow: 188 70% 48%;
+    --surface-dark: 222 47% 4%;
+    --surface-dark-soft: 222 40% 7%;
   }
   .dark {
     /* Dark mode - sophisticated off-black with warm undertone */
@@ -62,6 +64,8 @@
     --card: 220 19% 8%;
     --accent: 188 70% 48%;
     --accent-glow: 195 65% 38%;
+    --surface-dark: 222 47% 5%;
+    --surface-dark-soft: 222 38% 8%;
   }
   body {
     font-family: 'Geist', 'Inter', sans-serif;
@@ -89,13 +93,13 @@
     background:
       radial-gradient(ellipse 90% 55% at 50% -5%, hsl(195 65% 38% / 0.09), transparent 62%),
       radial-gradient(ellipse 55% 45% at 85% 25%, hsl(188 70% 48% / 0.06), transparent 58%),
-      radial-gradient(ellipse 70% 50% at 50% 100%, hsl(var(--muted) / 0.45), transparent 72%);
+      radial-gradient(ellipse 85% 55% at 50% 108%, hsl(var(--surface-dark) / 0.35), transparent 68%);
   }
   .dark .hero-section .hero-gradient {
     background:
       radial-gradient(ellipse 90% 55% at 50% -5%, hsl(188 70% 48% / 0.14), transparent 62%),
       radial-gradient(ellipse 55% 45% at 85% 25%, hsl(195 65% 38% / 0.09), transparent 58%),
-      radial-gradient(ellipse 75% 55% at 50% 105%, hsl(220 17% 11% / 0.9), transparent 70%);
+      radial-gradient(ellipse 90% 60% at 50% 108%, hsl(var(--surface-dark) / 0.75), transparent 72%);
   }
 
   /* Dot pattern - more subtle */
@@ -480,7 +484,7 @@
 
   /* Works / Case Study — bám layout reference (3-col editorial grid) */
   .works-section {
-    background: hsl(222 47% 4%);
+    background: hsl(var(--surface-dark));
     color: #fff;
   }
   .works-eyebrow {
@@ -525,7 +529,7 @@
     grid-template-columns: 1fr;
     overflow: hidden;
     isolation: isolate;
-    background: hsl(222 47% 5.5%);
+    background: hsl(var(--surface-dark-soft));
     border: 1px solid rgba(255, 255, 255, 0.1);
     scroll-margin-top: 6rem;
     transition: border-color 0.45s ease, box-shadow 0.45s ease;
@@ -689,15 +693,31 @@
 
   /* Core Services — phóng khoáng, chỉ line ngang (bám reference) */
   .core-services-section {
-    background: hsl(222 47% 4%);
+    position: relative;
+    z-index: 5;
+    margin-top: -1px;
+    background: hsl(var(--surface-dark));
     color: #fff;
+  }
+  .core-services-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5rem;
+    pointer-events: none;
+    z-index: 0;
+    background: linear-gradient(to bottom, hsl(var(--surface-dark-soft) / 0.6), hsl(var(--surface-dark)));
   }
   .core-services-ambient {
     position: absolute;
     inset: 0;
     pointer-events: none;
     z-index: 0;
-    background: radial-gradient(ellipse 80% 40% at 50% 0%, hsl(195 75% 78% / 0.05), transparent 60%);
+    background:
+      radial-gradient(ellipse 80% 40% at 50% 0%, hsl(195 75% 78% / 0.06), transparent 58%),
+      radial-gradient(ellipse 60% 35% at 100% 20%, hsl(188 70% 48% / 0.04), transparent 55%);
   }
   .core-services-inner {
     position: relative;
@@ -883,13 +903,14 @@
     }
   }
 
-  /* Hero showcase — liền nền với hero copy */
+  /* Hero showcase — chuyển tiếp mượt sang core-services */
   .hero-showcase {
     position: relative;
     overflow: hidden;
     background: transparent;
     height: 1000px;
     margin-top: -0.5rem;
+    z-index: 2;
   }
   .hero-showcase::after {
     content: '';
@@ -902,6 +923,28 @@
     z-index: 12;
     background: linear-gradient(to bottom, hsl(var(--background)), transparent);
   }
+  @media (min-width: 1024px) {
+    .hero-showcase {
+      background: linear-gradient(
+        180deg,
+        transparent 0%,
+        hsl(var(--muted) / 0.15) 28%,
+        hsl(var(--surface-dark) / 0.22) 58%,
+        hsl(var(--surface-dark) / 0.55) 82%,
+        hsl(var(--surface-dark) / 0.88) 100%
+      );
+    }
+    .hero-showcase::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 14;
+      background:
+        linear-gradient(to right, hsl(var(--background)) 0%, transparent 10%, transparent 90%, hsl(var(--background)) 100%),
+        linear-gradient(to bottom, transparent 0%, transparent 45%, hsl(var(--surface-dark) / 0.45) 78%, hsl(var(--surface-dark) / 0.85) 100%);
+    }
+  }
   @media (max-width: 1023px) {
     .hero-showcase {
       height: 700px;
@@ -909,6 +952,13 @@
       max-height: 700px;
       padding-top: 0;
       margin-top: -1rem;
+      background: linear-gradient(
+        180deg,
+        transparent 0%,
+        hsl(var(--muted) / 0.12) 40%,
+        hsl(var(--surface-dark) / 0.35) 72%,
+        hsl(var(--surface-dark) / 0.75) 100%
+      );
     }
     .hero-showcase::after {
       height: 3rem;
@@ -921,25 +971,38 @@
       z-index: 15;
       background:
         linear-gradient(to right, hsl(var(--background)) 0%, transparent 7%, transparent 93%, hsl(var(--background)) 100%),
-        linear-gradient(to bottom, transparent 42%, hsl(var(--background) / 0.55) 78%, hsl(var(--background)) 100%);
+        linear-gradient(to bottom, transparent 38%, hsl(var(--surface-dark) / 0.4) 72%, hsl(var(--surface-dark) / 0.9) 100%);
     }
   }
   .hero-showcase-fade-bottom {
     background: linear-gradient(
       to top,
-      hsl(var(--background)) 0%,
-      hsl(var(--background) / 0.92) 32%,
-      hsl(var(--background) / 0.35) 68%,
+      hsl(var(--surface-dark)) 0%,
+      hsl(var(--surface-dark) / 0.96) 22%,
+      hsl(var(--surface-dark) / 0.55) 48%,
+      hsl(var(--background) / 0.25) 72%,
       transparent 100%
     );
   }
-  @media (max-width: 1023px) {
+  @media (min-width: 1024px) {
     .hero-showcase-fade-bottom {
-      height: 10rem;
+      height: 14rem;
       background: linear-gradient(
         to top,
-        hsl(var(--background)) 0%,
-        hsl(var(--background) / 0.96) 38%,
+        hsl(var(--surface-dark)) 0%,
+        hsl(var(--surface-dark) / 0.98) 35%,
+        hsl(var(--surface-dark) / 0.4) 65%,
+        transparent 100%
+      );
+    }
+  }
+  @media (max-width: 1023px) {
+    .hero-showcase-fade-bottom {
+      height: 11rem;
+      background: linear-gradient(
+        to top,
+        hsl(var(--surface-dark)) 0%,
+        hsl(var(--surface-dark) / 0.97) 40%,
         transparent 100%
       );
     }
@@ -959,6 +1022,17 @@
   .hero-showcase-side-fade--right {
     right: 0;
     background: linear-gradient(to left, hsl(var(--background)), transparent);
+  }
+  @media (min-width: 1024px) {
+    .hero-showcase-side-fade {
+      width: 8rem;
+    }
+    .hero-showcase-side-fade--left {
+      background: linear-gradient(to right, hsl(var(--background)), hsl(var(--background) / 0.4) 40%, transparent);
+    }
+    .hero-showcase-side-fade--right {
+      background: linear-gradient(to left, hsl(var(--background)), hsl(var(--background) / 0.4) 40%, transparent);
+    }
   }
   .hero-showcase-m-wrap {
     position: relative;
@@ -1168,7 +1242,7 @@
     font-size: 0.8125rem;
     font-weight: 600;
     letter-spacing: -0.01em;
-    color: hsl(var(--foreground));
+    color: rgba(255, 255, 255, 0.88);
     white-space: nowrap;
     opacity: 0.92;
   }
@@ -1201,10 +1275,7 @@
     .hero-showcase-logos {
       bottom: 1.25rem !important;
       gap: 0.5rem !important;
-      opacity: 0.5;
-    }
-    .dark .hero-showcase-logos {
-      opacity: 0.62;
+      opacity: 0.72;
     }
     .hero-showcase-logos-row {
       gap: 2rem;

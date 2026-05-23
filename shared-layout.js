@@ -22,6 +22,11 @@
       .nav-link-active{background:hsl(var(--muted));color:hsl(var(--foreground));}
       .lang-switch{gap:.125rem;}
       .lang-switch-btn{display:inline-flex;align-items:center;justify-content:center;min-width:2.25rem;height:1.75rem;padding:0 .5rem;font-size:11px;font-weight:600;letter-spacing:.06em;border-radius:.25rem;color:hsl(var(--muted-foreground));transition:color .2s,background .2s;}
+      .header-actions-group{align-items:center;}
+      .header-actions-group .header-action-control{height:2.25rem;min-height:2.25rem;box-sizing:border-box;}
+      .header-actions-group #lang-switch{align-items:stretch;padding:0.125rem;}
+      .header-actions-group #lang-switch .lang-switch-btn{height:100%;min-height:0;align-self:stretch;}
+      .header-actions-group .header-action-control.btn-accent{line-height:1;}
       .lang-switch-btn.is-active{background:hsl(var(--foreground));color:hsl(var(--background));}
       .dark .light-only{display:none;}
       html:not(.dark) .dark-only{display:none;}
