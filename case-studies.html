@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Case Studies — Wave Digital</title>
+<meta name="description" content="Khám phá dự án tiêu biểu Wave Digital: Website chuyển đổi, AI Marketing, AI Agent và giải pháp Custom AI cho doanh nghiệp Việt." />
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Geist:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script>
+  tailwind.config = {
+    darkMode: 'class',
+    theme: {
+      extend: {
+        fontFamily: { sans: ['Geist', 'Inter', 'system-ui', 'sans-serif'] },
+        colors: {
+          border: 'hsl(var(--border))',
+          background: 'hsl(var(--background))',
+          foreground: 'hsl(var(--foreground))',
+          muted: { DEFAULT: 'hsl(var(--muted))', foreground: 'hsl(var(--muted-foreground))' },
+          card: 'hsl(var(--card))',
+        },
+      },
+    },
+  }
+</script>
+<style>
+  :root {
+    --background: 30 25% 98%;
+    --foreground: 220 25% 10%;
+    --muted: 220 14% 96%;
+    --muted-foreground: 220 9% 46%;
+    --border: 220 13% 91%;
+    --card: 0 0% 100%;
+  }
+  .dark {
+    --background: 220 20% 6%;
+    --foreground: 30 15% 95%;
+    --muted: 220 17% 11%;
+    --muted-foreground: 220 9% 60%;
+    --border: 220 15% 16%;
+    --card: 220 19% 8%;
+  }
+  body {
+    font-family: 'Geist', 'Inter', sans-serif;
+    background: hsl(var(--background));
+    color: hsl(var(--foreground));
+    -webkit-font-smoothing: antialiased;
+  }
+  .heading-section {
+    font-size: 1.875rem;
+    line-height: 1.2;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+  }
+  @media (min-width: 640px) { .heading-section { font-size: 2.25rem; } }
+  @media (min-width: 1024px) { .heading-section { font-size: 2.75rem; } }
+  .text-gradient-headline {
+    background: linear-gradient(102deg, #FFD4BC 0%, #FFB38E 42%, #F5A04A 78%, #E88B2A 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+  }
+  .heading-title-base { color: hsl(var(--foreground)); }
+  .btn-accent {
+    background: hsl(var(--foreground));
+    color: hsl(var(--background));
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .btn-accent:hover { transform: translateY(-1px); box-shadow: 0 8px 24px -8px hsl(var(--foreground) / 0.3); }
+  .brand-logo { width: 2rem; height: 2rem; border-radius: 0.5rem; object-fit: cover; flex-shrink: 0; }
+  .lang-switch-btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    min-width: 2.25rem; height: 1.75rem; padding: 0 0.5rem;
+    font-size: 11px; font-weight: 600; letter-spacing: 0.06em;
+    border-radius: 0.25rem; color: hsl(var(--muted-foreground));
+    transition: color 0.2s, background 0.2s;
+  }
+  .lang-switch-btn.is-active { background: hsl(var(--foreground)); color: hsl(var(--background)); }
+  .dark .light-only { display: none; }
+  html:not(.dark) .dark-only { display: none; }
+  .hero-gradient {
+    background:
+      radial-gradient(ellipse 80% 50% at 50% -10%, hsl(195 65% 38% / 0.08), transparent 60%),
+      radial-gradient(ellipse 50% 40% at 80% 20%, hsl(188 70% 48% / 0.05), transparent 60%);
+  }
+  .dot-pattern {
+    background-image: radial-gradient(circle, hsl(var(--border)) 1px, transparent 1px);
+    background-size: 32px 32px;
+  }
+  .cs-tab {
+    display: inline-flex; align-items: center; gap: 0.375rem;
+    padding: 0.5rem 0.875rem; font-size: 0.8125rem; font-weight: 500;
+    border-radius: 0.5rem; border: 1px solid hsl(var(--border));
+    color: hsl(var(--muted-foreground)); background: transparent;
+    transition: all 0.2s ease; white-space: nowrap;
+  }
+  .cs-tab:hover { color: hsl(var(--foreground)); background: hsl(var(--muted) / 0.5); }
+  .cs-tab.is-active {
+    background: hsl(var(--foreground)); color: hsl(var(--background)); border-color: hsl(var(--foreground));
+  }
+  .cs-search {
+    width: 100%; height: 2.5rem; padding: 0 0.875rem 0 2.5rem;
+    font-size: 0.875rem; border-radius: 0.5rem;
+    border: 1px solid hsl(var(--border)); background: hsl(var(--card));
+    color: hsl(var(--foreground));
+  }
+  .cs-search:focus { outline: none; box-shadow: 0 0 0 2px hsl(var(--foreground) / 0.12); }
+  .cs-card {
+    border: 1px solid hsl(var(--border)); border-radius: 1rem;
+    background: hsl(var(--card)); overflow: hidden;
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease, border-color 0.35s ease;
+  }
+  .cs-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 16px 40px -16px hsl(var(--foreground) / 0.15);
+    border-color: hsl(var(--foreground) / 0.15);
+  }
+  .cs-card-preview { aspect-ratio: 16/10; overflow: hidden; background: hsl(var(--muted)); }
+  .cs-card-preview img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+  .cs-card:hover .cs-card-preview img { transform: scale(1.04); }
+  .cs-badge {
+    font-size: 10px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+    padding: 0.25rem 0.5rem; border-radius: 0.25rem;
+    background: hsl(var(--muted)); color: hsl(var(--muted-foreground));
+  }
+  .cs-metric {
+    font-size: 11px; font-weight: 600; padding: 0.2rem 0.5rem;
+    border-radius: 9999px; border: 1px solid hsl(var(--border));
+    color: hsl(var(--muted-foreground));
+  }
+  .cs-promo {
+    background: hsl(var(--foreground));
+    color: hsl(var(--background));
+    border-radius: 1rem; overflow: hidden; position: relative;
+  }
+  .cs-promo::before {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(ellipse 80% 60% at 100% 0%, rgba(255, 179, 142, 0.25), transparent 55%);
+    pointer-events: none;
+  }
+  .cs-card.is-hidden { display: none; }
+  .lang-switch { gap: 0.125rem; }
+  .lang-switch-btn:hover:not(.is-active) { color: hsl(var(--foreground)); background: hsl(var(--muted) / 0.6); }
+</style>
+</head>
+<body class="antialiased">
+
+<div id="site-header"></div>
+
+<main>
+  <!-- Hero -->
+  <section class="relative border-b border-border overflow-hidden">
+    <div class="absolute inset-0 hero-gradient pointer-events-none"></div>
+    <div class="absolute inset-0 dot-pattern opacity-[0.06] pointer-events-none"></div>
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14">
+      <nav class="flex items-center gap-2 text-sm text-muted-foreground mb-8" aria-label="Breadcrumb">
+        <a href="index.html" class="hover:text-foreground transition flex items-center gap-1">
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+          Trang chủ
+        </a>
+        <span class="opacity-40">/</span>
+        <span class="text-foreground font-medium">Case Studies</span>
+      </nav>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+        <div class="lg:col-span-7">
+          <p class="text-[11px] font-medium uppercase tracking-[0.2em] text-muted-foreground mb-4">Dự án tiêu biểu</p>
+          <h1 class="heading-section">
+            <span class="heading-title-base">Case Studies — </span>
+            <span class="text-gradient-headline">kết quả thực tế</span>
+          </h1>
+          <p class="mt-5 text-base sm:text-lg text-muted-foreground leading-relaxed max-w-2xl">
+            Khám phá cách Wave Digital giúp doanh nghiệp Launching sản phẩm với Website chuyển đổi, AI Marketing, AI Agent và giải pháp Custom AI — đo lường bằng số liệu cụ thể.
+          </p>
+        </div>
+        <div class="lg:col-span-5">
+          <div class="cs-promo p-6 sm:p-7 relative">
+            <span class="inline-block text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full bg-white/15 mb-4">Gói Launching</span>
+            <p class="text-2xl sm:text-3xl font-bold tracking-tight">30 ngày</p>
+            <p class="mt-2 text-sm opacity-80 leading-relaxed">Từ idea đến go-live — Website, content AI, ads &amp; agent trong một quy trình duy nhất.</p>
+            <a href="index.html#contact" class="mt-5 inline-flex items-center gap-2 px-4 h-10 rounded-md text-sm font-medium bg-background text-foreground hover:opacity-90 transition">
+              <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"/></svg>
+              Đặt lịch tư vấn
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Filters -->
+  <section class="sticky top-16 z-40 bg-background/90 backdrop-blur-md border-b border-border">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+      <div class="flex flex-col lg:flex-row lg:items-center gap-4 justify-between">
+        <div class="flex gap-2 overflow-x-auto pb-1 -mb-1 scrollbar-hide" id="cs-tabs" role="tablist">
+          <button type="button" class="cs-tab is-active" data-filter="all" role="tab" aria-selected="true">Tất cả</button>
+          <button type="button" class="cs-tab" data-filter="website" role="tab">Website</button>
+          <button type="button" class="cs-tab" data-filter="marketing" role="tab">AI Marketing</button>
+          <button type="button" class="cs-tab" data-filter="agent" role="tab">AI Agent</button>
+          <button type="button" class="cs-tab" data-filter="custom" role="tab">Custom AI</button>
+        </div>
+        <div class="relative w-full lg:max-w-xs shrink-0">
+          <svg class="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground pointer-events-none" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+          <input type="search" id="cs-search" class="cs-search" placeholder="Tìm case study..." aria-label="Tìm case study" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Grid -->
+  <section class="py-12 sm:py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="mb-8">
+        <h2 class="text-xl sm:text-2xl font-bold tracking-tight" id="cs-section-title">Tất cả dự án</h2>
+        <p class="mt-2 text-sm text-muted-foreground" id="cs-section-desc">Các case study theo từng dịch vụ cốt lõi của Wave Digital.</p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="cs-grid">
+
+        <a href="case-study.html?slug=website-travel" class="cs-card block" data-category="website" data-keywords="website nextjs seo du lịch travel landing">
+          <div class="cs-card-preview">
+            <img src="https://images.shadcnspace.com/assets/shadcnspace-product/templates/atomist/atomist-01.webp" alt="Website du lịch Next.js" loading="lazy" />
+          </div>
+          <div class="p-5">
+            <span class="cs-badge">Website chuyển đổi</span>
+            <h3 class="mt-3 text-base font-semibold leading-snug">Website Next.js chuẩn SEO cho thương hiệu du lịch</h3>
+            <p class="mt-2 text-sm text-muted-foreground line-clamp-2">Landing chuyển đổi tối ưu tốc độ &amp; AI-friendly — thay WordPress bằng stack load dưới 1 giây.</p>
+            <div class="mt-4 flex flex-wrap gap-2">
+              <span class="cs-metric">+42% conversion</span>
+              <span class="cs-metric">&lt;1s load</span>
+            </div>
+          </div>
+        </a>
+
+        <a href="case-study.html?slug=marketing-fmcg" class="cs-card block" data-category="marketing" data-keywords="marketing content ai fmcg chiến dịch">
+          <div class="cs-card-preview">
+            <img src="https://images.shadcnspace.com/assets/blocks-images/marketing/portfolio-section.webp" alt="AI Marketing FMCG" loading="lazy" />
+          </div>
+          <div class="p-5">
+            <span class="cs-badge">AI Marketing</span>
+            <h3 class="mt-3 text-base font-semibold leading-snug">Chiến dịch content AI cho thương hiệu FMCG</h3>
+            <p class="mt-2 text-sm text-muted-foreground line-clamp-2">Master Plan 3 tháng + 16 assets AI đồng bộ thương hiệu — giảm phụ thuộc team inhouse.</p>
+            <div class="mt-4 flex flex-wrap gap-2">
+              <span class="cs-metric">-60% chi phí content</span>
+              <span class="cs-metric">5× assets</span>
+            </div>
+          </div>
+        </a>
+
+        <a href="case-study.html?slug=agent-fintech" class="cs-card block" data-category="agent" data-keywords="agent fintech chatbot zalo facebook support">
+          <div class="cs-card-preview">
+            <img src="https://images.shadcnspace.com/assets/blocks-images/marketing/feature-section-13.webp" alt="AI Agent fintech" loading="lazy" />
+          </div>
+          <div class="p-5">
+            <span class="cs-badge">AI Agent</span>
+            <h3 class="mt-3 text-base font-semibold leading-snug">Agent chăm sóc khách hàng 24/7 cho fintech</h3>
+            <p class="mt-2 text-sm text-muted-foreground line-clamp-2">Tự động trả lời inbox FB/Zalo, lead qualification &amp; đặt lịch — giải phóng đội CS.</p>
+            <div class="mt-4 flex flex-wrap gap-2">
+              <span class="cs-metric">60%+ tin AI xử lý</span>
+              <span class="cs-metric">-50% thời gian phản hồi</span>
+            </div>
+          </div>
+        </a>
+
+        <a href="case-study.html?slug=custom-logistics" class="cs-card block" data-category="custom" data-keywords="custom ai logistics crm automation pipeline">
+          <div class="cs-card-preview">
+            <img src="https://images.shadcnspace.com/assets/blocks-images/dashboard/charts-blocks.webp" alt="Custom AI logistics" loading="lazy" />
+          </div>
+          <div class="p-5">
+            <span class="cs-badge">Custom AI</span>
+            <h3 class="mt-3 text-base font-semibold leading-snug">Pipeline automation tích hợp CRM cho logistics</h3>
+            <p class="mt-2 text-sm text-muted-foreground line-clamp-2">Agent + workflow tích hợp CRM, database &amp; API — tự động báo giá &amp; tracking đơn.</p>
+            <div class="mt-4 flex flex-wrap gap-2">
+              <span class="cs-metric">-50% xử lý thủ công</span>
+              <span class="cs-metric">85% mở rộng scope</span>
+            </div>
+          </div>
+        </a>
+
+        <a href="case-study.html?slug=launching-startup" class="cs-card block" data-category="website marketing" data-keywords="launching startup ecommerce nextjs launching trọn bộ">
+          <div class="cs-card-preview">
+            <img src="https://images.shadcnspace.com/assets/shadcnspace-product/templates/digital-arc/digital-arc-01.webp" alt="Launching startup" loading="lazy" />
+          </div>
+          <div class="p-5">
+            <span class="cs-badge">Launching trọn bộ</span>
+            <h3 class="mt-3 text-base font-semibold leading-snug">Startup tech Launching sản phẩm trong 30 ngày</h3>
+            <p class="mt-2 text-sm text-muted-foreground line-clamp-2">Website + Master Plan + content AI + go-live ads — một đối tác, một timeline rõ ràng.</p>
+            <div class="mt-4 flex flex-wrap gap-2">
+              <span class="cs-metric">30 ngày go-live</span>
+              <span class="cs-metric">1 đối tác</span>
+            </div>
+          </div>
+        </a>
+
+        <a href="case-study.html?slug=website-ecommerce" class="cs-card block" data-category="website" data-keywords="ecommerce bán lẻ shop website chuyển đổi">
+          <div class="cs-card-preview">
+            <img src="https://images.shadcnspace.com/assets/shadcnspace-product/templates/awake/awake-01.webp" alt="Website e-commerce" loading="lazy" />
+          </div>
+          <div class="p-5">
+            <span class="cs-badge">Website chuyển đổi</span>
+            <h3 class="mt-3 text-base font-semibold leading-snug">Nâng cấp storefront e-commerce sang Next.js</h3>
+            <p class="mt-2 text-sm text-muted-foreground line-clamp-2">Tối ưu Core Web Vitals, schema SEO &amp; funnel checkout — tăng tỷ lệ hoàn tất đơn.</p>
+            <div class="mt-4 flex flex-wrap gap-2">
+              <span class="cs-metric">+28% checkout</span>
+              <span class="cs-metric">SEO 95+</span>
+            </div>
+          </div>
+        </a>
+
+        <a href="case-study.html?slug=marketing-realestate" class="cs-card block" data-category="marketing" data-keywords="bất động sản real estate marketing ads content">
+          <div class="cs-card-preview">
+            <img src="https://images.shadcnspace.com/assets/shadcnspace-product/templates/awake/awake-01.webp" alt="AI Marketing BĐS" loading="lazy" />
+          </div>
+          <div class="p-5">
+            <span class="cs-badge">AI Marketing</span>
+            <h3 class="mt-3 text-base font-semibold leading-snug">Content &amp; ads AI cho dự án bất động sản</h3>
+            <p class="mt-2 text-sm text-muted-foreground line-clamp-2">Video, image &amp; copy đồng bộ cho Meta/Google — rút ngắn chu kỳ sản xuất campaign.</p>
+            <div class="mt-4 flex flex-wrap gap-2">
+              <span class="cs-metric">-45% time-to-publish</span>
+              <span class="cs-metric">ROAS +32%</span>
+            </div>
+          </div>
+        </a>
+
+        <a href="case-study.html?slug=agent-education" class="cs-card block" data-category="agent" data-keywords="giáo dục education agent lead tư vấn">
+          <div class="cs-card-preview">
+            <img src="https://images.shadcnspace.com/assets/shadcnspace-product/templates/atomist/atomist-01.webp" alt="AI Agent giáo dục" loading="lazy" />
+          </div>
+          <div class="p-5">
+            <span class="cs-badge">AI Agent</span>
+            <h3 class="mt-3 text-base font-semibold leading-snug">Agent tư vấn khóa học cho trung tâm giáo dục</h3>
+            <p class="mt-2 text-sm text-muted-foreground line-clamp-2">Qualify lead, gợi ý lộ trình &amp; đặt lịch demo — tích hợp CRM và Zalo OA.</p>
+            <div class="mt-4 flex flex-wrap gap-2">
+              <span class="cs-metric">3× lead qualified</span>
+              <span class="cs-metric">24/7 online</span>
+            </div>
+          </div>
+        </a>
+
+      </div>
+
+      <p id="cs-empty" class="hidden text-center py-16 text-muted-foreground">Không tìm thấy case study phù hợp. Thử từ khóa hoặc bộ lọc khác.</p>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="border-t border-border bg-muted/30 py-16">
+    <div class="max-w-3xl mx-auto px-4 text-center">
+      <h2 class="heading-section">
+        <span class="heading-title-base">Muốn trở thành </span>
+        <span class="text-gradient-headline">case study tiếp theo?</span>
+      </h2>
+      <p class="mt-4 text-muted-foreground">Đặt lịch tư vấn miễn phí 30 phút — Wave Digital phân tích bài toán và đề xuất lộ trình Launching phù hợp.</p>
+      <a href="index.html#contact" class="btn-accent inline-flex items-center gap-2 mt-8 px-6 h-11 rounded-full text-sm font-medium">
+        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"/></svg>
+        Nhận tư vấn miễn phí
+      </a>
+    </div>
+  </section>
+</main>
+
+<div id="site-footer"></div>
+
+<script src="shared-layout.js" data-page="case-studies"></script>
+<script>
+  const labels = {
+    all: { title: 'Tất cả dự án', desc: 'Các case study theo từng dịch vụ cốt lõi của Wave Digital.' },
+    website: { title: 'Website chuyển đổi', desc: 'Next.js, SEO, tốc độ & funnel chuyển đổi cho thương hiệu.' },
+    marketing: { title: 'AI Marketing', desc: 'Master Plan, content AI & chiến dịch ads đồng bộ thương hiệu.' },
+    agent: { title: 'AI Agent', desc: 'Tự động hóa CS, lead qualification & vận hành 24/7.' },
+    custom: { title: 'Custom AI', desc: 'Agent & workflow tùy chỉnh tích hợp CRM, API & hệ thống nội bộ.' },
+  };
+
+  let activeFilter = 'all';
+  let searchQuery = '';
+
+  const cards = [...document.querySelectorAll('#cs-grid .cs-card')];
+  const tabs = document.querySelectorAll('#cs-tabs .cs-tab');
+  const searchInput = document.getElementById('cs-search');
+  const emptyEl = document.getElementById('cs-empty');
+  const titleEl = document.getElementById('cs-section-title');
+  const descEl = document.getElementById('cs-section-desc');
+
+  function applyFilters() {
+    const q = searchQuery.trim().toLowerCase();
+    let visible = 0;
+    cards.forEach(card => {
+      const cats = (card.dataset.category || '').split(/\s+/);
+      const matchCat = activeFilter === 'all' || cats.includes(activeFilter);
+      const text = (card.textContent + ' ' + (card.dataset.keywords || '')).toLowerCase();
+      const matchSearch = !q || text.includes(q);
+      const show = matchCat && matchSearch;
+      card.classList.toggle('is-hidden', !show);
+      if (show) visible++;
+    });
+    emptyEl.classList.toggle('hidden', visible > 0);
+    const l = labels[activeFilter] || labels.all;
+    titleEl.textContent = l.title;
+    descEl.textContent = l.desc;
+  }
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      activeFilter = tab.dataset.filter;
+      tabs.forEach(t => {
+        t.classList.toggle('is-active', t === tab);
+        t.setAttribute('aria-selected', t === tab ? 'true' : 'false');
+      });
+      applyFilters();
+    });
+  });
+
+  searchInput.addEventListener('input', e => {
+    searchQuery = e.target.value;
+    applyFilters();
+  });
+
+  applyFilters();
+</script>
+</body>
+</html>

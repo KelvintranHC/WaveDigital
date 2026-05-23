@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Case Study — Wave Digital</title>
+<meta name="description" content="Chi tiết dự án Wave Digital: vấn đề, giải pháp, công nghệ và kết quả đo lường được." />
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Geist:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script>
+  tailwind.config = {
+    darkMode: 'class',
+    theme: {
+      extend: {
+        fontFamily: { sans: ['Geist', 'Inter', 'system-ui', 'sans-serif'] },
+        colors: {
+          border: 'hsl(var(--border))',
+          background: 'hsl(var(--background))',
+          foreground: 'hsl(var(--foreground))',
+          muted: { DEFAULT: 'hsl(var(--muted))', foreground: 'hsl(var(--muted-foreground))' },
+          card: 'hsl(var(--card))',
+        },
+      },
+    },
+  }
+</script>
+<style>
+  :root {
+    --background: 30 25% 98%;
+    --foreground: 220 25% 10%;
+    --muted: 220 14% 96%;
+    --muted-foreground: 220 9% 46%;
+    --border: 220 13% 91%;
+    --card: 0 0% 100%;
+  }
+  .dark {
+    --background: 220 20% 6%;
+    --foreground: 30 15% 95%;
+    --muted: 220 17% 11%;
+    --muted-foreground: 220 9% 60%;
+    --border: 220 15% 16%;
+    --card: 220 19% 8%;
+  }
+  body { font-family: 'Geist', 'Inter', sans-serif; background: hsl(var(--background)); color: hsl(var(--foreground)); -webkit-font-smoothing: antialiased; }
+  .heading-section { font-size: 1.75rem; line-height: 1.2; font-weight: 700; letter-spacing: -0.025em; }
+  @media (min-width: 768px) { .heading-section { font-size: 2.5rem; } }
+  .heading-block { font-size: 1.25rem; font-weight: 700; letter-spacing: -0.02em; }
+  .text-gradient-headline {
+    background: linear-gradient(102deg, #FFD4BC 0%, #FFB38E 42%, #F5A04A 78%, #E88B2A 100%);
+    -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+  }
+  .heading-title-base { color: hsl(var(--foreground)); }
+  .btn-accent { background: hsl(var(--foreground)); color: hsl(var(--background)); transition: all 0.3s ease; }
+  .btn-accent:hover { transform: translateY(-1px); box-shadow: 0 8px 24px -8px hsl(var(--foreground) / 0.3); }
+  .brand-logo { width: 2rem; height: 2rem; border-radius: 0.5rem; object-fit: cover; }
+  .lang-switch-btn { display: inline-flex; align-items: center; justify-content: center; min-width: 2.25rem; height: 1.75rem; padding: 0 0.5rem; font-size: 11px; font-weight: 600; border-radius: 0.25rem; color: hsl(var(--muted-foreground)); }
+  .lang-switch-btn.is-active { background: hsl(var(--foreground)); color: hsl(var(--background)); }
+  .dark .light-only, html:not(.dark) .dark-only { display: none; }
+  .hero-gradient {
+    background: radial-gradient(ellipse 80% 50% at 50% -10%, hsl(195 65% 38% / 0.08), transparent 60%),
+      radial-gradient(ellipse 50% 40% at 80% 20%, hsl(188 70% 48% / 0.05), transparent 60%);
+  }
+  .dot-pattern { background-image: radial-gradient(circle, hsl(var(--border)) 1px, transparent 1px); background-size: 32px 32px; }
+  .csd-metric-card { border: 1px solid hsl(var(--border)); border-radius: 1rem; background: hsl(var(--card)); padding: 1.25rem; text-align: center; }
+  .csd-metric-value { font-size: 1.75rem; font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
+  @media (min-width: 640px) { .csd-metric-value { font-size: 2rem; } }
+  .csd-section { border: 1px solid hsl(var(--border)); border-radius: 1rem; background: hsl(var(--card)); padding: 1.5rem; }
+  @media (min-width: 640px) { .csd-section { padding: 2rem; } }
+  .csd-list li { position: relative; padding-left: 1.25rem; margin-bottom: 0.625rem; color: hsl(var(--muted-foreground)); line-height: 1.6; }
+  .csd-list li::before { content: ''; position: absolute; left: 0; top: 0.55em; width: 6px; height: 6px; border-radius: 50%; background: hsl(var(--foreground) / 0.35); }
+  .csd-tech { font-size: 12px; font-weight: 500; padding: 0.35rem 0.75rem; border-radius: 9999px; border: 1px solid hsl(var(--border)); background: hsl(var(--muted) / 0.5); }
+  .csd-timeline-item { display: grid; grid-template-columns: 5rem 1fr; gap: 1rem; padding-bottom: 1.25rem; border-bottom: 1px solid hsl(var(--border)); }
+  .csd-timeline-item:last-child { border-bottom: none; padding-bottom: 0; }
+  .csd-quote { border-left: 3px solid #FFB38E; padding-left: 1.25rem; }
+  .csd-related { border: 1px solid hsl(var(--border)); border-radius: 0.75rem; overflow: hidden; transition: transform 0.25s ease, border-color 0.25s; }
+  .csd-related:hover { transform: translateY(-2px); border-color: hsl(var(--foreground) / 0.2); }
+  .csd-related img { width: 100%; aspect-ratio: 16/9; object-fit: cover; }
+  .lang-switch { gap: 0.125rem; }
+  .lang-switch-btn:hover:not(.is-active) { color: hsl(var(--foreground)); background: hsl(var(--muted) / 0.6); }
+</style>
+</head>
+<body class="antialiased">
+
+<div id="site-header"></div>
+
+<main id="case-root">
+  <!-- Rendered by JS -->
+</main>
+
+<div id="site-footer"></div>
+
+<script src="cases-data.js"></script>
+<script src="shared-layout.js" data-page="case-study"></script>
+<script>
+  const params = new URLSearchParams(location.search);
+  const slug = params.get('slug') || '';
+  const data = window.CASE_STUDIES && window.CASE_STUDIES[slug];
+  const root = document.getElementById('case-root');
+
+  function esc(s) {
+    const d = document.createElement('div');
+    d.textContent = s;
+    return d.innerHTML;
+  }
+
+  function renderNotFound() {
+    root.innerHTML = `
+      <section class="py-24 px-4 text-center">
+        <h1 class="heading-section mb-4">Không tìm thấy case study</h1>
+        <p class="text-muted-foreground mb-8">Liên kết có thể đã thay đổi hoặc không tồn tại.</p>
+        <a href="case-studies.html" class="btn-accent inline-flex px-6 h-11 rounded-full text-sm font-medium items-center">Về danh sách Case Studies</a>
+      </section>`;
+    document.title = 'Case Study không tìm thấy — Wave Digital';
+  }
+
+  function renderCase(c) {
+    document.title = c.title + ' — Case Study | Wave Digital';
+    const meta = document.querySelector('meta[name="description"]');
+    if (meta) meta.content = c.subtitle;
+
+    const metricsHtml = c.metrics.map(m => `
+      <div class="csd-metric-card">
+        <div class="csd-metric-value text-gradient-headline">${m.value}</div>
+        <p class="mt-2 text-xs sm:text-sm text-muted-foreground">${m.label}</p>
+      </div>`).join('');
+
+    const problemsHtml = c.problems.map(p => `<li>${p}</li>`).join('');
+    const solutionHtml = c.solution.map(s => `<li>${s}</li>`).join('');
+    const processHtml = c.process.map(p => `
+      <div class="csd-timeline-item">
+        <div class="text-xs font-mono font-semibold text-muted-foreground pt-0.5">${p.step}</div>
+        <div>
+          <p class="font-semibold text-sm">${p.title}</p>
+          <p class="text-sm text-muted-foreground mt-1">${p.desc}</p>
+        </div>
+      </div>`).join('');
+    const techHtml = c.tech.map(t => `<span class="csd-tech">${t}</span>`).join('');
+    const resultsHtml = c.results.map(r => `<li>${r}</li>`).join('');
+    const servicesHtml = c.services.map(s => `<span class="csd-tech">${s}</span>`).join('');
+
+    const relatedHtml = (c.related || []).map(rs => {
+      const r = window.CASE_STUDIES[rs];
+      if (!r) return '';
+      return `
+        <a href="case-study.html?slug=${r.slug}" class="csd-related block">
+          <img src="${r.image}" alt="" loading="lazy" />
+          <div class="p-3">
+            <p class="text-[10px] uppercase tracking-wider text-muted-foreground font-semibold">${r.category}</p>
+            <p class="text-sm font-medium mt-1 line-clamp-2">${r.title}</p>
+          </div>
+        </a>`;
+    }).join('');
+
+    root.innerHTML = `
+      <section class="relative border-b border-border overflow-hidden">
+        <div class="absolute inset-0 hero-gradient pointer-events-none"></div>
+        <div class="absolute inset-0 dot-pattern opacity-[0.06] pointer-events-none"></div>
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+          <nav class="flex flex-wrap items-center gap-2 text-sm text-muted-foreground mb-8">
+            <a href="index.html" class="hover:text-foreground">Trang chủ</a>
+            <span class="opacity-40">/</span>
+            <a href="case-studies.html" class="hover:text-foreground">Case Studies</a>
+            <span class="opacity-40">/</span>
+            <span class="text-foreground font-medium line-clamp-1">${c.category}</span>
+          </nav>
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+            <div>
+              <span class="inline-block text-[10px] font-semibold uppercase tracking-wider px-2 py-1 rounded-md bg-muted text-muted-foreground mb-4">${c.category}</span>
+              <h1 class="heading-section heading-title-base">${c.title}</h1>
+              <p class="mt-4 text-base sm:text-lg text-muted-foreground leading-relaxed">${c.subtitle}</p>
+              <dl class="mt-6 grid grid-cols-2 gap-4 text-sm">
+                <div><dt class="text-muted-foreground">Khách hàng</dt><dd class="font-medium mt-0.5">${c.client}</dd></div>
+                <div><dt class="text-muted-foreground">Ngành</dt><dd class="font-medium mt-0.5">${c.industry}</dd></div>
+                <div><dt class="text-muted-foreground">Thời gian</dt><dd class="font-medium mt-0.5">${c.duration}</dd></div>
+                <div><dt class="text-muted-foreground">Năm triển khai</dt><dd class="font-medium mt-0.5">${c.year}</dd></div>
+              </dl>
+              <div class="mt-5 flex flex-wrap gap-2">${servicesHtml}</div>
+            </div>
+            <div class="rounded-2xl overflow-hidden border border-border aspect-[16/10] bg-muted">
+              <img src="${c.image}" alt="" class="w-full h-full object-cover" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="border-b border-border bg-muted/20 py-10 sm:py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">${metricsHtml}</div>
+        </div>
+      </section>
+
+      <section class="py-12 sm:py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
+            <div class="lg:col-span-8 space-y-8">
+              <div class="csd-section">
+                <h2 class="heading-block mb-4">Tổng quan dự án</h2>
+                <p class="text-muted-foreground leading-relaxed">${c.overview}</p>
+              </div>
+              <div class="csd-section">
+                <h2 class="heading-block mb-4">Vấn đề khách hàng</h2>
+                <p class="text-sm text-muted-foreground mb-4">Những thách thức chính trước khi hợp tác với Wave Digital:</p>
+                <ul class="csd-list">${problemsHtml}</ul>
+              </div>
+              <div class="csd-section">
+                <h2 class="heading-block mb-4">Giải pháp Wave Digital</h2>
+                <p class="text-sm text-muted-foreground mb-4">Lộ trình triển khai tập trung vào KPI kinh doanh, không chỉ deliverable kỹ thuật:</p>
+                <ul class="csd-list">${solutionHtml}</ul>
+              </div>
+              <div class="csd-section">
+                <h2 class="heading-block mb-4">Quy trình triển khai</h2>
+                <div class="space-y-0">${processHtml}</div>
+              </div>
+              <div class="csd-section">
+                <h2 class="heading-block mb-4">Công nghệ &amp; công cụ</h2>
+                <p class="text-sm text-muted-foreground mb-4">Stack được chọn theo yêu cầu scale, bảo mật và khả năng vận hành lâu dài:</p>
+                <div class="flex flex-wrap gap-2">${techHtml}</div>
+              </div>
+              <div class="csd-section">
+                <h2 class="heading-block mb-4">Kết quả đạt được</h2>
+                <p class="text-sm text-muted-foreground mb-4">Số liệu đo từ analytics, CRM và báo cáo vận hành sau go-live (đã ẩn danh theo NDA):</p>
+                <ul class="csd-list">${resultsHtml}</ul>
+              </div>
+              <div class="csd-section csd-quote">
+                <p class="text-lg sm:text-xl font-medium leading-relaxed italic">"${c.quote.text}"</p>
+                <p class="mt-4 text-sm font-semibold">${c.quote.author}</p>
+                <p class="text-sm text-muted-foreground">${c.quote.company}</p>
+              </div>
+            </div>
+            <aside class="lg:col-span-4 space-y-6">
+              <div class="lg:sticky lg:top-24">
+                <h3 class="font-semibold mb-4 text-sm uppercase tracking-wider text-muted-foreground">Case study liên quan</h3>
+                <div class="grid grid-cols-1 gap-4">${relatedHtml}</div>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <section class="border-t border-border bg-muted/30 py-16">
+        <div class="max-w-3xl mx-auto px-4 text-center">
+          <h2 class="heading-section">
+            <span class="heading-title-base">Bạn muốn kết quả </span>
+            <span class="text-gradient-headline">tương tự?</span>
+          </h2>
+          <p class="mt-4 text-muted-foreground">Wave Digital phân tích bài toán miễn phí 30 phút và đề xuất lộ trình phù hợp — Website, AI Marketing, AI Agent hoặc Custom AI.</p>
+          <div class="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
+            <a href="index.html#contact" class="btn-accent inline-flex items-center justify-center gap-2 px-6 h-11 rounded-full text-sm font-medium">Nhận tư vấn miễn phí</a>
+            <a href="case-studies.html" class="inline-flex items-center justify-center px-6 h-11 rounded-full text-sm font-medium border border-border hover:bg-muted">Xem thêm case study</a>
+          </div>
+        </div>
+      </section>`;
+  }
+
+  if (!data) {
+    renderNotFound();
+  } else {
+    renderCase(data);
+  }
+</script>
+</body>
+</html>
