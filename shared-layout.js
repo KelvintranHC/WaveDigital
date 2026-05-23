@@ -10,6 +10,8 @@
   const footerEl = document.getElementById('site-footer');
   if (!headerEl || !footerEl) return;
 
+  initTheme();
+
   if (document.body) document.body.classList.add('site-has-fixed-header');
 
   if (!document.getElementById('wave-layout-styles')) {
@@ -64,16 +66,23 @@
   const base = new URL('.', window.location.href).href;
 
   function applyTheme(dark) {
-    const html = document.documentElement;
-    html.classList.toggle('dark', dark);
+    if (window.WaveTheme?.apply) {
+      window.WaveTheme.apply(dark);
+    } else {
+      document.documentElement.classList.toggle('dark', dark);
+    }
     localStorage.setItem('theme', dark ? 'dark' : 'light');
   }
 
   function initTheme() {
     const html = document.documentElement;
-    const stored = localStorage.getItem('theme');
-    if (stored === 'dark' || (!stored && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-      html.classList.add('dark');
+    if (window.WaveTheme?.apply) {
+      window.WaveTheme.apply(window.WaveTheme.prefersDark());
+    } else {
+      const stored = localStorage.getItem('theme');
+      if (stored === 'dark' || (!stored && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        html.classList.add('dark');
+      }
     }
     document.querySelectorAll('#theme-toggle, #theme-toggle-mobile').forEach((toggle) => {
       if (!toggle || toggle.dataset.bound) return;
