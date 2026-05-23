@@ -84,6 +84,20 @@
       radial-gradient(ellipse 50% 40% at 80% 20%, hsl(195 65% 38% / 0.08), transparent 60%);
   }
 
+  /* Hero — một khối thống nhất (copy + showcase) */
+  .hero-section .hero-gradient {
+    background:
+      radial-gradient(ellipse 90% 55% at 50% -5%, hsl(195 65% 38% / 0.09), transparent 62%),
+      radial-gradient(ellipse 55% 45% at 85% 25%, hsl(188 70% 48% / 0.06), transparent 58%),
+      radial-gradient(ellipse 70% 50% at 50% 100%, hsl(var(--muted) / 0.45), transparent 72%);
+  }
+  .dark .hero-section .hero-gradient {
+    background:
+      radial-gradient(ellipse 90% 55% at 50% -5%, hsl(188 70% 48% / 0.14), transparent 62%),
+      radial-gradient(ellipse 55% 45% at 85% 25%, hsl(195 65% 38% / 0.09), transparent 58%),
+      radial-gradient(ellipse 75% 55% at 50% 105%, hsl(220 17% 11% / 0.9), transparent 70%);
+  }
+
   /* Dot pattern - more subtle */
   .dot-pattern {
     background-image: radial-gradient(circle, hsl(var(--border)) 1px, transparent 1px);
@@ -213,8 +227,9 @@
     width: 2rem;
     height: 2rem;
     border-radius: 0.5rem;
-    object-fit: cover;
+    object-fit: contain;
     flex-shrink: 0;
+    background: #ffffff;
   }
 
   /* Glow effects - subtler */
@@ -867,6 +882,338 @@
       transition: none !important;
     }
   }
+
+  /* Hero showcase — liền nền với hero copy */
+  .hero-showcase {
+    position: relative;
+    overflow: hidden;
+    background: transparent;
+    height: 1000px;
+    margin-top: -0.5rem;
+  }
+  .hero-showcase::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4.5rem;
+    pointer-events: none;
+    z-index: 12;
+    background: linear-gradient(to bottom, hsl(var(--background)), transparent);
+  }
+  @media (max-width: 1023px) {
+    .hero-showcase {
+      height: 700px;
+      min-height: 700px;
+      max-height: 700px;
+      padding-top: 0;
+      margin-top: -1rem;
+    }
+    .hero-showcase::after {
+      height: 3rem;
+    }
+    .hero-showcase::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 15;
+      background:
+        linear-gradient(to right, hsl(var(--background)) 0%, transparent 7%, transparent 93%, hsl(var(--background)) 100%),
+        linear-gradient(to bottom, transparent 42%, hsl(var(--background) / 0.55) 78%, hsl(var(--background)) 100%);
+    }
+  }
+  .hero-showcase-fade-bottom {
+    background: linear-gradient(
+      to top,
+      hsl(var(--background)) 0%,
+      hsl(var(--background) / 0.92) 32%,
+      hsl(var(--background) / 0.35) 68%,
+      transparent 100%
+    );
+  }
+  @media (max-width: 1023px) {
+    .hero-showcase-fade-bottom {
+      height: 10rem;
+      background: linear-gradient(
+        to top,
+        hsl(var(--background)) 0%,
+        hsl(var(--background) / 0.96) 38%,
+        transparent 100%
+      );
+    }
+  }
+  .hero-showcase-side-fade {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 6rem;
+    pointer-events: none;
+    z-index: 20;
+  }
+  .hero-showcase-side-fade--left {
+    left: 0;
+    background: linear-gradient(to right, hsl(var(--background)), transparent);
+  }
+  .hero-showcase-side-fade--right {
+    right: 0;
+    background: linear-gradient(to left, hsl(var(--background)), transparent);
+  }
+  .hero-showcase-m-wrap {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    padding: 0;
+  }
+  @media (max-width: 1023px) {
+    .hero-showcase-m-wrap {
+      height: 580px;
+      overflow: hidden;
+    }
+  }
+  .hero-showcase-m-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.4rem;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0;
+    align-items: stretch;
+  }
+  @media (max-width: 1023px) {
+    /* Cột giữa rộng, hai cột bên tràn ra ngoài — tham khảo Framer mobile */
+    .hero-showcase-m-grid {
+      position: relative;
+      left: 50%;
+      transform: translateX(-50%);
+      width: max-content;
+      height: 100%;
+      grid-template-columns: 10.5rem 14.25rem 10.5rem;
+      gap: 0.5rem;
+      max-width: none;
+      padding-top: 0.35rem;
+    }
+  }
+  @media (max-width: 1023px) and (min-width: 390px) {
+    .hero-showcase-m-grid {
+      grid-template-columns: 11.25rem 15rem 11.25rem;
+      gap: 0.625rem;
+    }
+  }
+  .hero-showcase-m-col {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    min-height: 0;
+  }
+  @media (min-width: 390px) {
+    .hero-showcase-m-col { gap: 0.5rem; }
+  }
+  @media (max-width: 1023px) {
+    .hero-showcase-m-col {
+      height: 100%;
+      margin-top: 0;
+    }
+    .hero-showcase-m-col:nth-child(1) {
+      padding-top: 1.25rem;
+    }
+    .hero-showcase-m-col:nth-child(2) {
+      padding-top: 0;
+      z-index: 2;
+    }
+    .hero-showcase-m-col:nth-child(3) {
+      padding-top: 1.75rem;
+    }
+    .hero-showcase-m-col .hero-showcase-card {
+      flex: 1 1 0;
+      min-height: 0;
+      display: flex;
+      flex-direction: column;
+    }
+    .hero-showcase-m-col:nth-child(2) .hero-showcase-card--featured {
+      flex: 1.35 1 0;
+    }
+    .hero-showcase-m-col .hero-showcase-card img {
+      flex: 1 1 auto;
+      width: 100%;
+      min-height: 0;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+    .hero-showcase-m-col:nth-child(1) .hero-showcase-card img {
+      object-position: right center;
+    }
+    .hero-showcase-m-col:nth-child(3) .hero-showcase-card img {
+      object-position: left center;
+    }
+  }
+  .hero-showcase-m-col:nth-child(1) { margin-top: 1.5rem; }
+  .hero-showcase-m-col:nth-child(2) { margin-top: 0; }
+  .hero-showcase-m-col:nth-child(3) { margin-top: 2.25rem; }
+  @media (max-width: 1023px) {
+    .hero-showcase-m-col:nth-child(1),
+    .hero-showcase-m-col:nth-child(2),
+    .hero-showcase-m-col:nth-child(3) {
+      margin-top: 0;
+    }
+  }
+  .hero-showcase-card {
+    border-radius: 0.625rem;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 8px 24px -8px rgba(0, 0, 0, 0.7);
+    background: #111;
+    flex-shrink: 0;
+  }
+  @media (min-width: 390px) {
+    .hero-showcase-card { border-radius: 0.75rem; }
+  }
+  .hero-showcase-card img {
+    display: block;
+    width: 100%;
+    height: auto;
+    vertical-align: middle;
+  }
+  .hero-showcase-card--featured {
+    box-shadow: 0 14px 36px -10px rgba(0, 0, 0, 0.8);
+  }
+  @media (min-width: 1024px) {
+    .hero-showcase-card--tall img {
+      object-fit: cover;
+      object-position: top center;
+    }
+    .hero-showcase-card--featured img {
+      aspect-ratio: 1;
+      object-fit: cover;
+      object-position: center;
+    }
+    .hero-showcase-card--wide img {
+      aspect-ratio: 4/3;
+      object-fit: cover;
+    }
+  }
+  .hero-showcase-wall {
+    position: absolute;
+    inset: 0;
+    top: 0;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 1rem;
+    padding: 1.5rem 1rem 0;
+    min-width: max-content;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .hero-showcase-col {
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    gap: 1rem;
+  }
+  .hero-showcase-wall .hero-showcase-card {
+    border-radius: 1rem;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
+  }
+  /* Hero tech logos — marquee 2 hàng đối chiều */
+  .hero-showcase-logos {
+    display: flex;
+    flex-direction: column;
+    gap: 0.625rem;
+    padding-left: 0;
+    padding-right: 0;
+    opacity: 0.55;
+  }
+  .hero-showcase-logos-track {
+    overflow: hidden;
+    width: 100%;
+    -webkit-mask-image: linear-gradient(to right, transparent, black 6%, black 94%, transparent);
+    mask-image: linear-gradient(to right, transparent, black 6%, black 94%, transparent);
+  }
+  .hero-showcase-logos-row {
+    display: flex;
+    align-items: center;
+    width: max-content;
+    gap: 2.5rem;
+    padding: 0 1.25rem;
+    will-change: transform;
+  }
+  @media (min-width: 640px) {
+    .hero-showcase-logos-row { gap: 3rem; }
+  }
+  @keyframes hero-logo-marquee-ltr {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+  @keyframes hero-logo-marquee-rtl {
+    from { transform: translateX(-50%); }
+    to { transform: translateX(0); }
+  }
+  .hero-showcase-logos-row--ltr {
+    animation: hero-logo-marquee-ltr 42s linear infinite;
+  }
+  .hero-showcase-logos-row--rtl {
+    animation: hero-logo-marquee-rtl 48s linear infinite;
+  }
+  .hero-showcase-logos:hover .hero-showcase-logos-row {
+    animation-play-state: paused;
+  }
+  .hero-showcase-logo-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-shrink: 0;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: hsl(var(--foreground));
+    white-space: nowrap;
+    opacity: 0.92;
+  }
+  @media (min-width: 640px) {
+    .hero-showcase-logo-item { font-size: 0.9375rem; }
+  }
+  .hero-showcase-logo-item svg {
+    width: 0.9375rem;
+    height: 0.9375rem;
+    flex-shrink: 0;
+    opacity: 0.85;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .hero-showcase-logos-row--ltr,
+    .hero-showcase-logos-row--rtl {
+      animation: none;
+      flex-wrap: wrap;
+      justify-content: center;
+      width: 100%;
+      gap: 0.75rem 1.5rem;
+    }
+    .hero-showcase-logos-row--rtl .hero-showcase-logo-item:nth-child(n+5) {
+      display: none;
+    }
+    .hero-showcase-logos-row--ltr .hero-showcase-logo-item:nth-child(n+5) {
+      display: none;
+    }
+  }
+  @media (max-width: 1023px) {
+    .hero-showcase-logos {
+      bottom: 1.25rem !important;
+      gap: 0.5rem !important;
+      opacity: 0.5;
+    }
+    .dark .hero-showcase-logos {
+      opacity: 0.62;
+    }
+    .hero-showcase-logos-row {
+      gap: 2rem;
+      padding: 0 0.75rem;
+    }
+    .hero-showcase-logo-item {
+      font-size: 0.8125rem !important;
+    }
+  }
 </style>
 </head>
 <body class="antialiased">
@@ -874,12 +1221,12 @@
 <div id="site-header"></div>
 
 <!-- Hero + Showcase (seamless) -->
-<section class="relative overflow-hidden bg-background">
+<section class="hero-section relative overflow-hidden bg-background">
   <div class="absolute inset-0 hero-gradient pointer-events-none"></div>
   <div class="absolute inset-0 dot-pattern opacity-[0.08] pointer-events-none"></div>
 
   <!-- Hero text -->
-  <div class="relative pt-24 pb-16 px-4 sm:px-6 lg:px-8">
+  <div class="hero-copy relative pt-[60px] pb-[60px] px-4 sm:px-6 lg:px-8">
     <div class="max-w-3xl mx-auto text-center">
       <div class="flex items-center justify-center gap-2 text-sm text-muted-foreground">
         <span>Wave Digital × AI</span>
@@ -907,183 +1254,256 @@
     </div>
   </div>
 
-  <!-- Cropped Hero Showcase Wall - cinematic Framer style -->
-  <div class="relative overflow-hidden" style="height: 1000px; background: #0a0a0a;">
-    <!-- Strong gradient fade at bottom - matches next section background for seamless transition -->
-    <div class="absolute bottom-0 left-0 right-0 h-80 pointer-events-none z-20" style="background: linear-gradient(to top, hsl(var(--background)) 0%, hsl(var(--background)) 30%, rgba(10,10,10,0.6) 70%, transparent 100%);"></div>
-    <!-- Soft side fades -->
-    <div class="absolute top-0 bottom-0 left-0 w-24 bg-gradient-to-r from-black/60 to-transparent pointer-events-none z-20"></div>
-    <div class="absolute top-0 bottom-0 right-0 w-24 bg-gradient-to-l from-black/60 to-transparent pointer-events-none z-20"></div>
+  <!-- Hero showcase — mobile grid + desktop cinematic wall -->
+  <div class="hero-showcase">
+    <div class="absolute bottom-0 left-0 right-0 h-48 sm:h-64 lg:h-80 pointer-events-none z-20 hero-showcase-fade-bottom"></div>
+    <div class="hero-showcase-side-fade hero-showcase-side-fade--left hidden lg:block" aria-hidden="true"></div>
+    <div class="hero-showcase-side-fade hero-showcase-side-fade--right hidden lg:block" aria-hidden="true"></div>
 
-    <!-- Columns wider than viewport, scroll out of frame -->
-    <div class="absolute inset-x-0 top-0 flex items-start justify-center gap-4 px-4 pt-6" style="min-width: max-content; left: 50%; transform: translateX(-50%);">
-
-      <!-- COL 1 - offset -40px -->
-      <div class="flex flex-col shrink-0 gap-4 w-[180px] md:w-[230px]" style="transform: translateY(-40px);">
-        <div class="rounded-2xl overflow-hidden border border-white/10 shadow-2xl shadow-black/60">
-          <img src="https://framerusercontent.com/images/3Wul3zB87cbFlm05OhXiZaxxXg.jpg?width=720&height=660" alt="" class="w-full h-auto block" loading="lazy" />
+    <!-- Mobile / tablet: masonry 3 cột (Framer-style) -->
+    <div class="hero-showcase-m-wrap lg:hidden">
+      <div class="hero-showcase-m-grid">
+        <div class="hero-showcase-m-col">
+          <div class="hero-showcase-card hero-showcase-card--wide">
+            <img src="https://framerusercontent.com/images/3Wul3zB87cbFlm05OhXiZaxxXg.jpg?width=720&height=660" alt="" loading="lazy" />
+          </div>
+          <div class="hero-showcase-card">
+            <img src="https://framerusercontent.com/images/vr4TXGHUM5WvKKKpdSi7NKoU.jpg?width=720&height=600" alt="" loading="lazy" />
+          </div>
+          <div class="hero-showcase-card">
+            <img src="https://framerusercontent.com/images/d4YjsL7yalSYZREJ1IdNPmw.jpg?width=720&height=840" alt="" loading="lazy" />
+          </div>
         </div>
-        <div class="rounded-2xl overflow-hidden border border-white/10 shadow-2xl shadow-black/60">
-          <img src="https://framerusercontent.com/images/vr4TXGHUM5WvKKKpdSi7NKoU.jpg?width=720&height=600" alt="" class="w-full h-auto block" loading="lazy" />
+        <div class="hero-showcase-m-col">
+          <div class="hero-showcase-card hero-showcase-card--featured">
+            <img src="https://framerusercontent.com/images/uS0nUv30GToaflDaraI9qVUIwU.png?width=1068&height=1080" alt="" loading="lazy" />
+          </div>
+          <div class="hero-showcase-card">
+            <img src="https://framerusercontent.com/images/gmhdX4XPuJvQqId9jDmFHb7cFE.jpg?width=720&height=780" alt="" loading="lazy" />
+          </div>
+          <div class="hero-showcase-card hero-showcase-card--wide">
+            <img src="https://framerusercontent.com/images/3RGrfrckophlAobhfZlqf1MDPd0.jpg?width=720&height=720" alt="" loading="lazy" />
+          </div>
         </div>
-        <div class="rounded-2xl overflow-hidden border border-white/10 shadow-2xl shadow-black/60">
-          <img src="https://framerusercontent.com/images/OiLWEMPHjsMaE1LpfCX7OYHI.jpg?width=720&height=800" alt="" class="w-full h-auto block" loading="lazy" />
-        </div>
-      </div>
-
-      <!-- COL 2 - offset 0px -->
-      <div class="flex flex-col shrink-0 gap-4 w-[160px] md:w-[200px]" style="transform: translateY(0px);">
-        <div class="rounded-2xl overflow-hidden border border-white/10 shadow-2xl shadow-black/60">
-          <img src="https://framerusercontent.com/images/3RGrfrckophlAobhfZlqf1MDPd0.jpg?width=720&height=720" alt="" class="w-full h-auto block" loading="lazy" />
-        </div>
-        <div class="rounded-2xl overflow-hidden border border-white/10 shadow-2xl shadow-black/60">
-          <img src="https://framerusercontent.com/images/hZ3ztUHQQ9Tn50mg184gLvKcy4E.jpg?width=720&height=1020" alt="" class="w-full h-auto block" loading="lazy" />
-        </div>
-        <div class="rounded-2xl overflow-hidden border border-white/10 shadow-2xl shadow-black/60">
-          <img src="https://framerusercontent.com/images/Tkq5qQlGiu0yhgjP3SrSQz7eog.jpg?width=720&height=840" alt="" class="w-full h-auto block" loading="lazy" />
-        </div>
-      </div>
-
-      <!-- COL 3 - phone, offset -80px -->
-      <div class="flex flex-col shrink-0 gap-4 w-[140px] md:w-[170px]" style="transform: translateY(-80px);">
-        <div class="rounded-2xl overflow-hidden border border-white/10 shadow-2xl shadow-black/60">
-          <img src="https://framerusercontent.com/images/8VfS5zuMmDchIpaCf767I8rX7Y.jpg?width=480&height=1040" alt="" class="w-full h-auto block" loading="lazy" />
-        </div>
-        <div class="rounded-2xl overflow-hidden border border-white/10 shadow-2xl shadow-black/60">
-          <img src="https://framerusercontent.com/images/KCk7nP2M4mP1QclNxHPIrT1FvcA.jpg?width=480&height=1040" alt="" class="w-full h-auto block" loading="lazy" />
-        </div>
-        <div class="rounded-2xl overflow-hidden border border-white/10 shadow-2xl shadow-black/60">
-          <img src="https://framerusercontent.com/images/6SXUv7jMAEkw8PabtmC6TXNIiM.jpg?width=480&height=1040" alt="" class="w-full h-auto block" loading="lazy" />
-        </div>
-      </div>
-
-      <!-- COL 4 - offset -20px -->
-      <div class="flex flex-col shrink-0 gap-4 w-[200px] md:w-[260px]" style="transform: translateY(-20px);">
-        <div class="rounded-2xl overflow-hidden border border-white/10 shadow-2xl shadow-black/60">
-          <img src="https://framerusercontent.com/images/PruQlxKuftAZHgOh7hJT3jaUbs.jpg?width=720&height=660" alt="" class="w-full h-auto block" loading="lazy" />
-        </div>
-        <div class="rounded-2xl overflow-hidden border border-white/10 shadow-2xl shadow-black/60">
-          <img src="https://framerusercontent.com/images/d4YjsL7yalSYZREJ1IdNPmw.jpg?width=720&height=840" alt="" class="w-full h-auto block" loading="lazy" />
-        </div>
-        <div class="rounded-2xl overflow-hidden border border-white/10 shadow-2xl shadow-black/60">
-          <img src="https://framerusercontent.com/images/W1Q88PlQfYXaGug9EBkmai9By4.jpg?width=720&height=960" alt="" class="w-full h-auto block" loading="lazy" />
-        </div>
-      </div>
-
-      <!-- COL 5 - HERO center, biggest, offset -50px -->
-      <div class="flex flex-col shrink-0 gap-4 w-[220px] md:w-[290px]" style="transform: translateY(-50px);">
-        <div class="rounded-2xl overflow-hidden border border-white/10 shadow-2xl shadow-black/60">
-          <img src="https://framerusercontent.com/images/uS0nUv30GToaflDaraI9qVUIwU.png?width=1068&height=1080" alt="" class="w-full h-auto block" loading="lazy" />
-        </div>
-        <div class="rounded-2xl overflow-hidden border border-white/10 shadow-2xl shadow-black/60">
-          <img src="https://framerusercontent.com/images/gmhdX4XPuJvQqId9jDmFHb7cFE.jpg?width=720&height=780" alt="" class="w-full h-auto block" loading="lazy" />
-        </div>
-        <div class="rounded-2xl overflow-hidden border border-white/10 shadow-2xl shadow-black/60">
-          <img src="https://framerusercontent.com/images/4pTVxnxo0Bvii8xP7hCmmozqx7s.jpg?width=720&height=840" alt="" class="w-full h-auto block" loading="lazy" />
-        </div>
-      </div>
-
-      <!-- COL 6 - phone, offset -10px -->
-      <div class="flex flex-col shrink-0 gap-4 w-[140px] md:w-[170px]" style="transform: translateY(-10px);">
-        <div class="rounded-2xl overflow-hidden border border-white/10 shadow-2xl shadow-black/60">
-          <img src="https://framerusercontent.com/images/Hp4KG1pwKb6cl66bNB9b2pYWQ3Y.jpg?width=480&height=987" alt="" class="w-full h-auto block" loading="lazy" />
-        </div>
-        <div class="rounded-2xl overflow-hidden border border-white/10 shadow-2xl shadow-black/60">
-          <img src="https://framerusercontent.com/images/c8yQcxKjBlCZWoqWoRoBRvjcKo.jpg?width=400&height=864" alt="" class="w-full h-auto block" loading="lazy" />
-        </div>
-        <div class="rounded-2xl overflow-hidden border border-white/10 shadow-2xl shadow-black/60">
-          <img src="https://framerusercontent.com/images/cx71XZYYWfIozOc1rn55Bw.jpg?width=480&height=1039" alt="" class="w-full h-auto block" loading="lazy" />
-        </div>
-      </div>
-
-      <!-- COL 7 - offset -60px -->
-      <div class="flex flex-col shrink-0 gap-4 w-[200px] md:w-[260px]" style="transform: translateY(-60px);">
-        <div class="rounded-2xl overflow-hidden border border-white/10 shadow-2xl shadow-black/60">
-          <img src="https://framerusercontent.com/images/HnQI4uTAjbgziEmMMInd3R6o9c.jpg?width=720&height=600" alt="" class="w-full h-auto block" loading="lazy" />
-        </div>
-        <div class="rounded-2xl overflow-hidden border border-white/10 shadow-2xl shadow-black/60">
-          <img src="https://framerusercontent.com/images/iR48olgey2UZQ9FFhsWFne27Ag.jpg?width=720&height=900" alt="" class="w-full h-auto block" loading="lazy" />
-        </div>
-        <div class="rounded-2xl overflow-hidden border border-white/10 shadow-2xl shadow-black/60">
-          <img src="https://framerusercontent.com/images/JUWRJbfPWXb05lTNw0q4p1jewc.jpg?width=720&height=540" alt="" class="w-full h-auto block" loading="lazy" />
-        </div>
-      </div>
-
-      <!-- COL 8 - offset -30px -->
-      <div class="flex flex-col shrink-0 gap-4 w-[180px] md:w-[230px]" style="transform: translateY(-30px);">
-        <div class="rounded-2xl overflow-hidden border border-white/10 shadow-2xl shadow-black/60">
-          <img src="https://framerusercontent.com/images/0DoFvQInPiH34TWUk6DzVA9JQ.jpg?width=720&height=852" alt="" class="w-full h-auto block" loading="lazy" />
-        </div>
-        <div class="rounded-2xl overflow-hidden border border-white/10 shadow-2xl shadow-black/60">
-          <img src="https://framerusercontent.com/images/irsyTM7kM1DWjcg6fJkQQ1O04s.jpg?width=720&height=578" alt="" class="w-full h-auto block" loading="lazy" />
-        </div>
-        <div class="rounded-2xl overflow-hidden border border-white/10 shadow-2xl shadow-black/60">
-          <img src="https://framerusercontent.com/images/0DqWFfs9zfVYPO7PZd8O8bsRtE.jpg?width=720&height=1290" alt="" class="w-full h-auto block" loading="lazy" />
-        </div>
-      </div>
-
-      <!-- COL 9 - offset -90px -->
-      <div class="flex flex-col shrink-0 gap-4 w-[160px] md:w-[210px]" style="transform: translateY(-90px);">
-        <div class="rounded-2xl overflow-hidden border border-white/10 shadow-2xl shadow-black/60">
-          <img src="https://framerusercontent.com/images/07eSDIMcoh8sIIeP3LRZ0LKH9Ek.jpg?width=720&height=1080" alt="" class="w-full h-auto block" loading="lazy" />
-        </div>
-        <div class="rounded-2xl overflow-hidden border border-white/10 shadow-2xl shadow-black/60">
-          <img src="https://framerusercontent.com/images/iB2sti3JTa52BB06KGSFSXQq4cI.jpg?width=720&height=900" alt="" class="w-full h-auto block" loading="lazy" />
-        </div>
-        <div class="rounded-2xl overflow-hidden border border-white/10 shadow-2xl shadow-black/60">
-          <img src="https://framerusercontent.com/images/0EFFqlzBjEuDJK5Iy3xbQEed4rY.jpg?width=720&height=540" alt="" class="w-full h-auto block" loading="lazy" />
-        </div>
-      </div>
-
-      <!-- COL 10 (extra) - offset -15px -->
-      <div class="flex flex-col shrink-0 gap-4 w-[180px] md:w-[230px]" style="transform: translateY(-15px);">
-        <div class="rounded-2xl overflow-hidden border border-white/10 shadow-2xl shadow-black/60">
-          <img src="https://framerusercontent.com/images/pzsEcmp12GBybVJMMHJIQiRfEAQ.jpg?width=480&height=1040" alt="" class="w-full h-auto block" loading="lazy" />
-        </div>
-        <div class="rounded-2xl overflow-hidden border border-white/10 shadow-2xl shadow-black/60">
-          <img src="https://framerusercontent.com/images/PruQlxKuftAZHgOh7hJT3jaUbs.jpg?width=720&height=660" alt="" class="w-full h-auto block" loading="lazy" />
+        <div class="hero-showcase-m-col">
+          <div class="hero-showcase-card hero-showcase-card--tall">
+            <img src="https://framerusercontent.com/images/8VfS5zuMmDchIpaCf767I8rX7Y.jpg?width=480&height=1040" alt="" loading="lazy" />
+          </div>
+          <div class="hero-showcase-card hero-showcase-card--tall">
+            <img src="https://framerusercontent.com/images/Hp4KG1pwKb6cl66bNB9b2pYWQ3Y.jpg?width=480&height=987" alt="" loading="lazy" />
+          </div>
+          <div class="hero-showcase-card hero-showcase-card--tall">
+            <img src="https://framerusercontent.com/images/KCk7nP2M4mP1QclNxHPIrT1FvcA.jpg?width=480&height=1040" alt="" loading="lazy" />
+          </div>
         </div>
       </div>
     </div>
 
-    <!-- Logos floating inside dark faded area, sit at bottom -->
-    <div class="absolute bottom-12 left-0 right-0 z-30 flex flex-wrap items-center justify-center gap-x-10 gap-y-4 px-4 opacity-60">
-      <div class="flex items-center gap-2 text-base font-bold text-foreground">
-        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 12h4v8h4v-6h4v6h4v-8h4z"/></svg>
-        <span>OpenAI</span>
+    <!-- Desktop: wall nhiều cột -->
+    <div class="hero-showcase-wall hidden lg:flex" aria-hidden="true">
+
+      <!-- COL 1 - offset -40px -->
+      <div class="hero-showcase-col w-[230px]" style="transform: translateY(-40px);">
+        <div class="hero-showcase-card rounded-2xl">
+          <img src="https://framerusercontent.com/images/3Wul3zB87cbFlm05OhXiZaxxXg.jpg?width=720&height=660" alt="" loading="lazy" />
+        </div>
+        <div class="hero-showcase-card rounded-2xl">
+          <img src="https://framerusercontent.com/images/vr4TXGHUM5WvKKKpdSi7NKoU.jpg?width=720&height=600" alt="" loading="lazy" />
+        </div>
+        <div class="hero-showcase-card rounded-2xl">
+          <img src="https://framerusercontent.com/images/OiLWEMPHjsMaE1LpfCX7OYHI.jpg?width=720&height=800" alt="" loading="lazy" />
+        </div>
       </div>
-      <div class="flex items-center gap-2 text-base font-bold text-foreground">
-        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg>
-        <span>Claude AI</span>
+
+      <div class="hero-showcase-col w-[200px]" style="transform: translateY(0);">
+        <div class="hero-showcase-card rounded-2xl">
+          <img src="https://framerusercontent.com/images/3RGrfrckophlAobhfZlqf1MDPd0.jpg?width=720&height=720" alt="" loading="lazy" />
+        </div>
+        <div class="hero-showcase-card rounded-2xl">
+          <img src="https://framerusercontent.com/images/hZ3ztUHQQ9Tn50mg184gLvKcy4E.jpg?width=720&height=1020" alt="" loading="lazy" />
+        </div>
+        <div class="hero-showcase-card rounded-2xl">
+          <img src="https://framerusercontent.com/images/Tkq5qQlGiu0yhgjP3SrSQz7eog.jpg?width=720&height=840" alt="" loading="lazy" />
+        </div>
       </div>
-      <div class="flex items-center gap-2 text-base font-bold text-foreground">
-        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 22 22 22"/></svg>
-        <span>Next.js</span>
+
+      <div class="hero-showcase-col w-[170px]" style="transform: translateY(-80px);">
+        <div class="hero-showcase-card rounded-2xl">
+          <img src="https://framerusercontent.com/images/8VfS5zuMmDchIpaCf767I8rX7Y.jpg?width=480&height=1040" alt="" loading="lazy" />
+        </div>
+        <div class="hero-showcase-card rounded-2xl">
+          <img src="https://framerusercontent.com/images/KCk7nP2M4mP1QclNxHPIrT1FvcA.jpg?width=480&height=1040" alt="" loading="lazy" />
+        </div>
+        <div class="hero-showcase-card rounded-2xl">
+          <img src="https://framerusercontent.com/images/6SXUv7jMAEkw8PabtmC6TXNIiM.jpg?width=480&height=1040" alt="" loading="lazy" />
+        </div>
       </div>
-      <div class="flex items-center gap-2 text-base font-bold text-foreground">
-        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-          <circle cx="12" cy="12" r="2" fill="currentColor"/>
-          <ellipse cx="12" cy="12" rx="10" ry="4"/>
-          <ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(60 12 12)"/>
-          <ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(120 12 12)"/>
-        </svg>
-        <span>React</span>
+
+      <div class="hero-showcase-col w-[260px]" style="transform: translateY(-20px);">
+        <div class="hero-showcase-card rounded-2xl">
+          <img src="https://framerusercontent.com/images/PruQlxKuftAZHgOh7hJT3jaUbs.jpg?width=720&height=660" alt="" loading="lazy" />
+        </div>
+        <div class="hero-showcase-card rounded-2xl">
+          <img src="https://framerusercontent.com/images/d4YjsL7yalSYZREJ1IdNPmw.jpg?width=720&height=840" alt="" loading="lazy" />
+        </div>
+        <div class="hero-showcase-card rounded-2xl">
+          <img src="https://framerusercontent.com/images/W1Q88PlQfYXaGug9EBkmai9By4.jpg?width=720&height=960" alt="" loading="lazy" />
+        </div>
       </div>
-      <div class="flex items-center gap-2 text-base font-bold text-foreground">
-        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12.001 4.8c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624C13.666 10.618 15.027 12 18.001 12c3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C16.337 6.182 14.976 4.8 12.001 4.8zm-6 7.2c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624 1.177 1.194 2.538 2.576 5.512 2.576 3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C10.337 13.382 8.976 12 6.001 12z"/></svg>
-        <span>Tailwind</span>
+
+      <div class="hero-showcase-col w-[290px]" style="transform: translateY(-50px);">
+        <div class="hero-showcase-card rounded-2xl">
+          <img src="https://framerusercontent.com/images/uS0nUv30GToaflDaraI9qVUIwU.png?width=1068&height=1080" alt="" loading="lazy" />
+        </div>
+        <div class="hero-showcase-card rounded-2xl">
+          <img src="https://framerusercontent.com/images/gmhdX4XPuJvQqId9jDmFHb7cFE.jpg?width=720&height=780" alt="" loading="lazy" />
+        </div>
+        <div class="hero-showcase-card rounded-2xl">
+          <img src="https://framerusercontent.com/images/4pTVxnxo0Bvii8xP7hCmmozqx7s.jpg?width=720&height=840" alt="" loading="lazy" />
+        </div>
       </div>
-      <div class="flex items-center gap-2 text-base font-bold text-foreground">
-        <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M8 24c2.208 0 4-1.792 4-4v-4H8c-2.208 0-4 1.792-4 4s1.792 4 4 4zm-4-12c0-2.208 1.792-4 4-4h4v8H8c-2.208 0-4-1.792-4-4zm0-8c0-2.208 1.792-4 4-4h4v8H8C5.792 8 4 6.208 4 4zm8-4h4c2.208 0 4 1.792 4 4s-1.792 4-4 4h-4V0zm8 12c0 2.208-1.792 4-4 4s-4-1.792-4-4 1.792-4 4-4 4 1.792 4 4z"/></svg>
-        <span>Figma</span>
+
+      <div class="hero-showcase-col w-[170px]" style="transform: translateY(-10px);">
+        <div class="hero-showcase-card rounded-2xl">
+          <img src="https://framerusercontent.com/images/Hp4KG1pwKb6cl66bNB9b2pYWQ3Y.jpg?width=480&height=987" alt="" loading="lazy" />
+        </div>
+        <div class="hero-showcase-card rounded-2xl">
+          <img src="https://framerusercontent.com/images/c8yQcxKjBlCZWoqWoRoBRvjcKo.jpg?width=400&height=864" alt="" loading="lazy" />
+        </div>
+        <div class="hero-showcase-card rounded-2xl">
+          <img src="https://framerusercontent.com/images/cx71XZYYWfIozOc1rn55Bw.jpg?width=480&height=1039" alt="" loading="lazy" />
+        </div>
       </div>
-      <div class="flex items-center gap-2 text-base font-bold text-foreground">
-        <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><circle cx="6" cy="12" r="3"/><circle cx="18" cy="12" r="3"/><path d="M9 12h6" stroke="currentColor" stroke-width="2"/></svg>
-        <span>Midjourney</span>
+
+      <div class="hero-showcase-col w-[260px]" style="transform: translateY(-60px);">
+        <div class="hero-showcase-card rounded-2xl">
+          <img src="https://framerusercontent.com/images/HnQI4uTAjbgziEmMMInd3R6o9c.jpg?width=720&height=600" alt="" loading="lazy" />
+        </div>
+        <div class="hero-showcase-card rounded-2xl">
+          <img src="https://framerusercontent.com/images/iR48olgey2UZQ9FFhsWFne27Ag.jpg?width=720&height=900" alt="" loading="lazy" />
+        </div>
+        <div class="hero-showcase-card rounded-2xl">
+          <img src="https://framerusercontent.com/images/JUWRJbfPWXb05lTNw0q4p1jewc.jpg?width=720&height=540" alt="" loading="lazy" />
+        </div>
       </div>
-      <div class="flex items-center gap-2 text-base font-bold text-foreground">
-        <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M3 3h18v18H3z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M7 12h10M12 7v10" stroke="currentColor" stroke-width="2"/></svg>
-        <span>n8n</span>
+
+      <div class="hero-showcase-col w-[230px]" style="transform: translateY(-30px);">
+        <div class="hero-showcase-card rounded-2xl">
+          <img src="https://framerusercontent.com/images/0DoFvQInPiH34TWUk6DzVA9JQ.jpg?width=720&height=852" alt="" loading="lazy" />
+        </div>
+        <div class="hero-showcase-card rounded-2xl">
+          <img src="https://framerusercontent.com/images/irsyTM7kM1DWjcg6fJkQQ1O04s.jpg?width=720&height=578" alt="" loading="lazy" />
+        </div>
+        <div class="hero-showcase-card rounded-2xl">
+          <img src="https://framerusercontent.com/images/0DqWFfs9zfVYPO7PZd8O8bsRtE.jpg?width=720&height=1290" alt="" loading="lazy" />
+        </div>
+      </div>
+
+      <div class="hero-showcase-col w-[210px]" style="transform: translateY(-90px);">
+        <div class="hero-showcase-card rounded-2xl">
+          <img src="https://framerusercontent.com/images/07eSDIMcoh8sIIeP3LRZ0LKH9Ek.jpg?width=720&height=1080" alt="" loading="lazy" />
+        </div>
+        <div class="hero-showcase-card rounded-2xl">
+          <img src="https://framerusercontent.com/images/iB2sti3JTa52BB06KGSFSXQq4cI.jpg?width=720&height=900" alt="" loading="lazy" />
+        </div>
+        <div class="hero-showcase-card rounded-2xl">
+          <img src="https://framerusercontent.com/images/0EFFqlzBjEuDJK5Iy3xbQEed4rY.jpg?width=720&height=540" alt="" loading="lazy" />
+        </div>
+      </div>
+
+      <div class="hero-showcase-col w-[230px]" style="transform: translateY(-15px);">
+        <div class="hero-showcase-card rounded-2xl">
+          <img src="https://framerusercontent.com/images/pzsEcmp12GBybVJMMHJIQiRfEAQ.jpg?width=480&height=1040" alt="" loading="lazy" />
+        </div>
+        <div class="hero-showcase-card rounded-2xl">
+          <img src="https://framerusercontent.com/images/PruQlxKuftAZHgOh7hJT3jaUbs.jpg?width=720&height=660" alt="" loading="lazy" />
+        </div>
+      </div>
+    </div>
+
+    <!-- Tech logos — marquee 2 hàng đối chiều -->
+    <div class="hero-showcase-logos absolute bottom-12 left-0 right-0 z-30" aria-label="Công nghệ đối tác">
+      <div class="hero-showcase-logos-track">
+        <div class="hero-showcase-logos-row hero-showcase-logos-row--rtl">
+          <div class="hero-showcase-logo-item">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2L2 12h4v8h4v-6h4v6h4v-8h4z"/></svg>
+            <span>OpenAI</span>
+          </div>
+          <div class="hero-showcase-logo-item">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="12" r="10"/></svg>
+            <span>Claude AI</span>
+          </div>
+          <div class="hero-showcase-logo-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polygon points="12 2 2 22 22 22"/></svg>
+            <span>Next.js</span>
+          </div>
+          <div class="hero-showcase-logo-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+              <circle cx="12" cy="12" r="2" fill="currentColor"/>
+              <ellipse cx="12" cy="12" rx="10" ry="4"/>
+              <ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(60 12 12)"/>
+              <ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(120 12 12)"/>
+            </svg>
+            <span>React</span>
+          </div>
+          <div class="hero-showcase-logo-item" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 12h4v8h4v-6h4v6h4v-8h4z"/></svg>
+            <span>OpenAI</span>
+          </div>
+          <div class="hero-showcase-logo-item" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg>
+            <span>Claude AI</span>
+          </div>
+          <div class="hero-showcase-logo-item" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 22 22 22"/></svg>
+            <span>Next.js</span>
+          </div>
+          <div class="hero-showcase-logo-item" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <circle cx="12" cy="12" r="2" fill="currentColor"/>
+              <ellipse cx="12" cy="12" rx="10" ry="4"/>
+              <ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(60 12 12)"/>
+              <ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(120 12 12)"/>
+            </svg>
+            <span>React</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero-showcase-logos-track">
+        <div class="hero-showcase-logos-row hero-showcase-logos-row--ltr">
+          <div class="hero-showcase-logo-item">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.001 4.8c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624C13.666 10.618 15.027 12 18.001 12c3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C16.337 6.182 14.976 4.8 12.001 4.8zm-6 7.2c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624 1.177 1.194 2.538 2.576 5.512 2.576 3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C10.337 13.382 8.976 12 6.001 12z"/></svg>
+            <span>Tailwind</span>
+          </div>
+          <div class="hero-showcase-logo-item">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 24c2.208 0 4-1.792 4-4v-4H8c-2.208 0-4 1.792-4 4s1.792 4 4 4zm-4-12c0-2.208 1.792-4 4-4h4v8H8c-2.208 0-4-1.792-4-4zm0-8c0-2.208 1.792-4 4-4h4v8H8C5.792 8 4 6.208 4 4zm8-4h4c2.208 0 4 1.792 4 4s-1.792 4-4 4h-4V0zm8 12c0 2.208-1.792 4-4 4s-4-1.792-4-4 1.792-4 4-4 4 1.792 4 4z"/></svg>
+            <span>Figma</span>
+          </div>
+          <div class="hero-showcase-logo-item">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="6" cy="12" r="3"/><circle cx="18" cy="12" r="3"/><path d="M9 12h6" stroke="currentColor" stroke-width="2"/></svg>
+            <span>Midjourney</span>
+          </div>
+          <div class="hero-showcase-logo-item">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 3h18v18H3z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M7 12h10M12 7v10" stroke="currentColor" stroke-width="2"/></svg>
+            <span>n8n</span>
+          </div>
+          <div class="hero-showcase-logo-item" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.001 4.8c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624C13.666 10.618 15.027 12 18.001 12c3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C16.337 6.182 14.976 4.8 12.001 4.8zm-6 7.2c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624 1.177 1.194 2.538 2.576 5.512 2.576 3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C10.337 13.382 8.976 12 6.001 12z"/></svg>
+            <span>Tailwind</span>
+          </div>
+          <div class="hero-showcase-logo-item" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 24c2.208 0 4-1.792 4-4v-4H8c-2.208 0-4 1.792-4 4s1.792 4 4 4zm-4-12c0-2.208 1.792-4 4-4h4v8H8c-2.208 0-4-1.792-4-4zm0-8c0-2.208 1.792-4 4-4h4v8H8C5.792 8 4 6.208 4 4zm8-4h4c2.208 0 4 1.792 4 4s-1.792 4-4 4h-4V0zm8 12c0 2.208-1.792 4-4 4s-4-1.792-4-4 1.792-4 4-4 4 1.792 4 4z"/></svg>
+            <span>Figma</span>
+          </div>
+          <div class="hero-showcase-logo-item" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="currentColor"><circle cx="6" cy="12" r="3"/><circle cx="18" cy="12" r="3"/><path d="M9 12h6" stroke="currentColor" stroke-width="2"/></svg>
+            <span>Midjourney</span>
+          </div>
+          <div class="hero-showcase-logo-item" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 3h18v18H3z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M7 12h10M12 7v10" stroke="currentColor" stroke-width="2"/></svg>
+            <span>n8n</span>
+          </div>
+        </div>
       </div>
     </div>
   </div>
