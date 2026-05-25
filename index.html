@@ -5,7 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="color-scheme" content="light dark" />
 <script src="theme-boot.js"></script>
-<style id="theme-critical">html{background-color:hsl(30,25%,98%)}html.dark{background-color:hsl(220,20%,6%)}</style>
+<style id="theme-critical">html{background-color:#fff}html.dark{background-color:hsl(220,20%,6%)}</style>
+<link rel="stylesheet" href="wave-tokens.css" />
 <title>Wave Digital — Giải pháp AI trọn bộ Launching sản phẩm</title>
 <meta name="description" content="Wave Digital ứng dụng AI để cung cấp giải pháp tổng thể Launching sản phẩm: Website chuyển đổi, AI Marketing, AI Agent — biến ý tưởng thành hiện thực." />
 <script src="https://cdn.tailwindcss.com"></script>
@@ -40,46 +41,9 @@
   }
 </script>
 <style>
-  :root {
-    /* Light mode - off-white warm, refined */
-    --background: 30 25% 98%;
-    --foreground: 220 25% 10%;
-    --primary: 220 25% 10%;
-    --primary-foreground: 30 25% 98%;
-    --muted: 220 14% 96%;
-    --muted-foreground: 220 9% 46%;
-    --border: 220 13% 91%;
-    --card: 0 0% 100%;
-    --accent: 195 65% 38%;
-    --accent-glow: 188 70% 48%;
-    --surface-dark: 222 47% 4%;
-    --surface-dark-soft: 222 40% 7%;
-  }
-  .dark {
-    /* Dark mode - sophisticated off-black with warm undertone */
-    --background: 220 20% 6%;
-    --foreground: 30 15% 95%;
-    --primary: 30 15% 95%;
-    --primary-foreground: 220 20% 6%;
-    --muted: 220 17% 11%;
-    --muted-foreground: 220 9% 60%;
-    --border: 220 15% 16%;
-    --card: 220 19% 8%;
-    --accent: 188 70% 48%;
-    --accent-glow: 195 65% 38%;
-    --surface-dark: 222 47% 5%;
-    --surface-dark-soft: 222 38% 8%;
-  }
-  html {
-    background-color: hsl(30 25% 98%);
-  }
-  html.dark {
-    background-color: hsl(220 20% 6%);
-  }
+  /* Tokens: wave-tokens.css */
   body {
     font-family: 'Geist', 'Inter', sans-serif;
-    background: hsl(var(--background));
-    color: hsl(var(--foreground));
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     letter-spacing: -0.01em;
@@ -207,33 +171,9 @@
     text-transform: uppercase;
   }
 
-  /* Headline accent — cam đào sang trọng (3 tông, chéo nhẹ) */
-  .text-gradient-headline {
-    background: linear-gradient(102deg, #FFD4BC 0%, #FFB38E 42%, #F5A04A 78%, #E88B2A 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    color: transparent;
-  }
-  .dark .text-gradient-headline,
-  .core-services-section .text-gradient-headline,
-  .works-section .text-gradient-headline {
-    filter: drop-shadow(0 0 32px rgba(255, 179, 142, 0.28));
-  }
+  /* Headline gradient — wave-tokens.css */
   .heading-title-base {
     color: hsl(var(--foreground));
-  }
-  .dark .heading-title-base,
-  .core-services-section .heading-title-base,
-  .works-section .heading-title-base {
-    color: #ffffff;
-  }
-  .text-gradient-accent {
-    background: linear-gradient(102deg, #FFD4BC 0%, #FFB38E 42%, #F5A04A 78%, #E88B2A 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    color: transparent;
   }
 
   .brand-logo {
@@ -280,7 +220,7 @@
   }
 
   .service-case-btn {
-    border: 1px solid rgba(255, 255, 255, 0.25);
+    border: 1px solid hsl(var(--border));
     transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   }
   .service-case-btn:hover {
@@ -357,7 +297,7 @@
     height: 100%;
     width: 100%;
     border-radius: inherit;
-    background: linear-gradient(90deg, #FFD4BC 0%, #FFB38E 50%, #F0932B 100%);
+    background: var(--gradient-display-accent);
   }
   .process-grid {
     display: grid;
@@ -392,7 +332,7 @@
     left: 0;
     right: 0;
     height: 2px;
-    background: linear-gradient(90deg, #FFD4BC, #FFB38E, #F0932B);
+    background: var(--gradient-display-accent);
     opacity: 0;
     transition: opacity 0.35s ease;
     z-index: 2;
@@ -453,7 +393,7 @@
     line-height: 1;
     letter-spacing: -0.04em;
     margin-bottom: 0.35rem;
-    background: linear-gradient(102deg, #FFD4BC 0%, #FFB38E 45%, #E88B2A 100%);
+    background: var(--gradient-display);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
@@ -491,16 +431,11 @@
     color: hsl(var(--muted-foreground));
   }
 
-  /* Works / Case Study — bám layout reference (3-col editorial grid) */
-  .works-section {
-    background: hsl(var(--surface-dark));
-    color: #fff;
-  }
+  /* Works — surface tokens: wave-theme-sections.css */
   .works-eyebrow {
     font-size: 11px;
     font-family: ui-monospace, monospace;
     letter-spacing: 0.3em;
-    opacity: 0.5;
     margin-bottom: 1rem;
   }
   .works-view-all {
@@ -512,14 +447,9 @@
     font-weight: 500;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    border: 1px solid rgba(255, 255, 255, 0.18);
     border-radius: 0;
     transition: all 0.2s ease;
     flex-shrink: 0;
-  }
-  .works-view-all:hover {
-    border-color: rgba(255, 255, 255, 0.35);
-    background: rgba(255, 255, 255, 0.05);
   }
   .works-grid {
     display: flex;
@@ -538,49 +468,8 @@
     grid-template-columns: 1fr;
     overflow: hidden;
     isolation: isolate;
-    background: hsl(var(--surface-dark-soft));
-    border: 1px solid rgba(255, 255, 255, 0.1);
     scroll-margin-top: 6rem;
     transition: border-color 0.45s ease, box-shadow 0.45s ease;
-  }
-  .works-row::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    z-index: 0;
-    background:
-      radial-gradient(ellipse 75% 90% at 0% 40%, hsl(195 75% 78% / 0.14), transparent 58%),
-      radial-gradient(ellipse 55% 70% at 100% 15%, hsl(188 70% 62% / 0.1), transparent 52%),
-      radial-gradient(ellipse 45% 55% at 50% 110%, hsl(200 65% 85% / 0.07), transparent 48%);
-    transition: opacity 0.45s ease;
-  }
-  .works-row::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    z-index: 0;
-    background: linear-gradient(
-      118deg,
-      rgba(255, 255, 255, 0.06) 0%,
-      transparent 38%,
-      transparent 62%,
-      hsl(188 70% 55% / 0.05) 100%
-    );
-  }
-  .works-row:hover {
-    border-color: hsl(188 70% 55% / 0.28);
-    box-shadow:
-      0 0 48px -14px hsl(188 70% 55% / 0.22),
-      0 0 96px -28px hsl(195 70% 70% / 0.14),
-      inset 0 1px 0 rgba(255, 255, 255, 0.1);
-  }
-  .works-row:hover::before {
-    background:
-      radial-gradient(ellipse 80% 95% at 0% 40%, hsl(195 75% 82% / 0.18), transparent 58%),
-      radial-gradient(ellipse 60% 75% at 100% 15%, hsl(188 70% 65% / 0.14), transparent 52%),
-      radial-gradient(ellipse 50% 60% at 50% 110%, hsl(200 65% 88% / 0.1), transparent 48%);
   }
   @media (min-width: 1024px) {
     .works-row {
@@ -598,7 +487,7 @@
       padding: 3rem 2.25rem;
     }
     .works-row .works-col + .works-col {
-      border-left: 1px solid rgba(255, 255, 255, 0.12);
+      border-left: 1px solid hsl(var(--surface-band-border));
     }
   }
   .works-col-info {
@@ -611,7 +500,7 @@
     font-weight: 500;
     letter-spacing: 0.22em;
     text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.38);
+    color: hsl(var(--on-surface-band-muted));
     margin-bottom: 2rem;
   }
   @media (min-width: 1024px) {
@@ -636,11 +525,11 @@
   .works-desc {
     font-size: 0.8125rem;
     line-height: 1.7;
-    color: rgba(255, 255, 255, 0.72);
+    color: hsl(var(--on-surface-band-muted));
     max-width: 24rem;
   }
   .works-desc strong {
-    color: #fff;
+    color: hsl(var(--on-surface-band));
     font-weight: 600;
   }
   .works-col-visual {
@@ -682,31 +571,24 @@
   .works-metric:last-child {
     padding-bottom: 0;
   }
-  .works-metric + .works-metric {
-    border-top: 1px solid rgba(255, 255, 255, 0.12);
-  }
   .works-metric-value {
     font-size: clamp(2.25rem, 4vw, 3.25rem);
     font-weight: 700;
     letter-spacing: -0.04em;
     line-height: 1;
     margin-bottom: 0.625rem;
-    color: #fff;
   }
   .works-metric-label {
     font-size: 0.75rem;
     line-height: 1.55;
-    color: rgba(255, 255, 255, 0.38);
     max-width: 15rem;
   }
 
-  /* Core Services — phóng khoáng, chỉ line ngang (bám reference) */
+  /* Core Services — surface tokens: wave-theme-sections.css */
   .core-services-section {
     position: relative;
     z-index: 5;
     margin-top: -1px;
-    background: hsl(var(--surface-dark));
-    color: #fff;
   }
   .core-services-section::before {
     content: '';
@@ -717,16 +599,12 @@
     height: 5rem;
     pointer-events: none;
     z-index: 0;
-    background: linear-gradient(to bottom, hsl(var(--surface-dark-soft) / 0.6), hsl(var(--surface-dark)));
   }
   .core-services-ambient {
     position: absolute;
     inset: 0;
     pointer-events: none;
     z-index: 0;
-    background:
-      radial-gradient(ellipse 80% 40% at 50% 0%, hsl(195 75% 78% / 0.06), transparent 58%),
-      radial-gradient(ellipse 60% 35% at 100% 20%, hsl(188 70% 48% / 0.04), transparent 55%);
   }
   .core-services-inner {
     position: relative;
@@ -745,12 +623,10 @@
   .core-service-line-track {
     position: absolute;
     inset: 0;
-    background: rgba(255, 255, 255, 0.1);
   }
   .core-service-line-fill {
     position: absolute;
     inset: 0;
-    background: #fff;
     transform: scaleX(0);
     transform-origin: left center;
     transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
@@ -774,7 +650,6 @@
     font-size: 11px;
     font-family: ui-monospace, monospace;
     letter-spacing: 0.2em;
-    color: rgba(255, 255, 255, 0.38);
     margin-bottom: 2.5rem;
   }
   @media (min-width: 1024px) {
@@ -801,7 +676,6 @@
     max-width: 13rem;
     aspect-ratio: 4 / 3;
     margin: 0 auto;
-    border: 1px solid rgba(255, 255, 255, 0.08);
     background: transparent;
   }
   @media (min-width: 1024px) {
@@ -912,7 +786,7 @@
     }
   }
 
-  /* Hero showcase — chuyển tiếp mượt sang core-services */
+  /* Hero showcase — fade gallery: light = xanh nhạt, dark = tối */
   .hero-showcase {
     position: relative;
     overflow: hidden;
@@ -927,31 +801,50 @@
     top: 0;
     left: 0;
     right: 0;
-    height: 4.5rem;
+    height: 5rem;
     pointer-events: none;
     z-index: 12;
-    background: linear-gradient(to bottom, hsl(var(--background)), transparent);
+    background: linear-gradient(
+      to bottom,
+      hsl(var(--fade-gallery-top)) 0%,
+      hsl(var(--fade-gallery-soft) / 0.75) 55%,
+      transparent 100%
+    );
+  }
+  .hero-showcase::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 14;
+    background:
+      linear-gradient(
+        to right,
+        hsl(var(--fade-gallery-top)) 0%,
+        hsl(var(--fade-gallery-soft) / 0.35) 10%,
+        transparent 18%,
+        transparent 82%,
+        hsl(var(--fade-gallery-soft) / 0.35) 90%,
+        hsl(var(--fade-gallery-top)) 100%
+      ),
+      linear-gradient(
+        to bottom,
+        transparent 0%,
+        transparent 38%,
+        hsl(var(--fade-gallery-mid) / 0.45) 70%,
+        hsl(var(--fade-gallery) / 0.88) 92%,
+        hsl(var(--fade-gallery)) 100%
+      );
   }
   @media (min-width: 1024px) {
     .hero-showcase {
       background: linear-gradient(
         180deg,
         transparent 0%,
-        hsl(var(--muted) / 0.15) 28%,
-        hsl(var(--surface-dark) / 0.22) 58%,
-        hsl(var(--surface-dark) / 0.55) 82%,
-        hsl(var(--surface-dark) / 0.88) 100%
+        hsl(var(--fade-gallery-mid) / 0.2) 42%,
+        hsl(var(--fade-gallery-soft) / 0.65) 78%,
+        hsl(var(--fade-gallery)) 100%
       );
-    }
-    .hero-showcase::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      z-index: 14;
-      background:
-        linear-gradient(to right, hsl(var(--background)) 0%, transparent 10%, transparent 90%, hsl(var(--background)) 100%),
-        linear-gradient(to bottom, transparent 0%, transparent 45%, hsl(var(--surface-dark) / 0.45) 78%, hsl(var(--surface-dark) / 0.85) 100%);
     }
   }
   @media (max-width: 1023px) {
@@ -964,32 +857,39 @@
       background: linear-gradient(
         180deg,
         transparent 0%,
-        hsl(var(--muted) / 0.12) 40%,
-        hsl(var(--surface-dark) / 0.35) 72%,
-        hsl(var(--surface-dark) / 0.75) 100%
+        hsl(var(--fade-gallery-mid) / 0.18) 45%,
+        hsl(var(--fade-gallery-soft) / 0.7) 80%,
+        hsl(var(--fade-gallery)) 100%
       );
     }
     .hero-showcase::after {
-      height: 3rem;
+      height: 3.5rem;
     }
     .hero-showcase::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
       z-index: 15;
       background:
-        linear-gradient(to right, hsl(var(--background)) 0%, transparent 7%, transparent 93%, hsl(var(--background)) 100%),
-        linear-gradient(to bottom, transparent 38%, hsl(var(--surface-dark) / 0.4) 72%, hsl(var(--surface-dark) / 0.9) 100%);
+        linear-gradient(
+          to right,
+          hsl(var(--fade-gallery-top)) 0%,
+          transparent 12%,
+          transparent 88%,
+          hsl(var(--fade-gallery-top)) 100%
+        ),
+        linear-gradient(
+          to bottom,
+          transparent 32%,
+          hsl(var(--fade-gallery-mid) / 0.5) 68%,
+          hsl(var(--fade-gallery) / 0.92) 100%
+        );
     }
   }
   .hero-showcase-fade-bottom {
     background: linear-gradient(
       to top,
-      hsl(var(--surface-dark)) 0%,
-      hsl(var(--surface-dark) / 0.96) 22%,
-      hsl(var(--surface-dark) / 0.55) 48%,
-      hsl(var(--background) / 0.25) 72%,
+      hsl(var(--fade-gallery)) 0%,
+      hsl(var(--fade-gallery) / 0.88) 25%,
+      hsl(var(--fade-gallery-mid) / 0.5) 55%,
+      hsl(var(--fade-gallery-soft) / 0.15) 78%,
       transparent 100%
     );
   }
@@ -998,9 +898,9 @@
       height: 14rem;
       background: linear-gradient(
         to top,
-        hsl(var(--surface-dark)) 0%,
-        hsl(var(--surface-dark) / 0.98) 35%,
-        hsl(var(--surface-dark) / 0.4) 65%,
+        hsl(var(--fade-gallery)) 0%,
+        hsl(var(--fade-gallery) / 0.85) 28%,
+        hsl(var(--fade-gallery-mid) / 0.42) 58%,
         transparent 100%
       );
     }
@@ -1010,8 +910,8 @@
       height: 11rem;
       background: linear-gradient(
         to top,
-        hsl(var(--surface-dark)) 0%,
-        hsl(var(--surface-dark) / 0.97) 40%,
+        hsl(var(--fade-gallery)) 0%,
+        hsl(var(--fade-gallery) / 0.82) 38%,
         transparent 100%
       );
     }
@@ -1026,20 +926,121 @@
   }
   .hero-showcase-side-fade--left {
     left: 0;
-    background: linear-gradient(to right, hsl(var(--background)), transparent);
+    background: linear-gradient(
+      to right,
+      hsl(var(--fade-gallery-top)) 0%,
+      hsl(var(--fade-gallery-soft) / 0.5) 50%,
+      transparent 100%
+    );
   }
   .hero-showcase-side-fade--right {
     right: 0;
+    background: linear-gradient(
+      to left,
+      hsl(var(--fade-gallery-top)) 0%,
+      hsl(var(--fade-gallery-soft) / 0.5) 50%,
+      transparent 100%
+    );
+  }
+  @media (min-width: 1024px) {
+    .hero-showcase-side-fade { width: 8rem; }
+    .hero-showcase-side-fade--left {
+      background: linear-gradient(
+        to right,
+        hsl(var(--fade-gallery-top)) 0%,
+        hsl(var(--fade-gallery-soft) / 0.65) 38%,
+        transparent 100%
+      );
+    }
+    .hero-showcase-side-fade--right {
+      background: linear-gradient(
+        to left,
+        hsl(var(--fade-gallery-top)) 0%,
+        hsl(var(--fade-gallery-soft) / 0.65) 38%,
+        transparent 100%
+      );
+    }
+  }
+
+  /* Dark mode — fade tối (giữ như cũ) */
+  .dark .hero-showcase::after {
+    background: linear-gradient(to bottom, hsl(var(--background)), transparent);
+  }
+  .dark .hero-showcase::before {
+    background:
+      linear-gradient(to right, hsl(var(--background)) 0%, transparent 10%, transparent 90%, hsl(var(--background)) 100%),
+      linear-gradient(to bottom, transparent 0%, transparent 45%, hsl(var(--surface-dark) / 0.45) 78%, hsl(var(--surface-dark) / 0.85) 100%);
+  }
+  @media (min-width: 1024px) {
+    .dark .hero-showcase {
+      background: linear-gradient(
+        180deg,
+        transparent 0%,
+        hsl(var(--muted) / 0.15) 28%,
+        hsl(var(--surface-dark) / 0.22) 58%,
+        hsl(var(--surface-dark) / 0.55) 82%,
+        hsl(var(--surface-dark) / 0.88) 100%
+      );
+    }
+  }
+  @media (max-width: 1023px) {
+    .dark .hero-showcase {
+      background: linear-gradient(
+        180deg,
+        transparent 0%,
+        hsl(var(--muted) / 0.12) 40%,
+        hsl(var(--surface-dark) / 0.35) 72%,
+        hsl(var(--surface-dark) / 0.75) 100%
+      );
+    }
+    .dark .hero-showcase::before {
+      background:
+        linear-gradient(to right, hsl(var(--background)) 0%, transparent 7%, transparent 93%, hsl(var(--background)) 100%),
+        linear-gradient(to bottom, transparent 38%, hsl(var(--surface-dark) / 0.4) 72%, hsl(var(--surface-dark) / 0.9) 100%);
+    }
+  }
+  .dark .hero-showcase-fade-bottom {
+    background: linear-gradient(
+      to top,
+      hsl(var(--surface-dark)) 0%,
+      hsl(var(--surface-dark) / 0.96) 22%,
+      hsl(var(--surface-dark) / 0.55) 48%,
+      hsl(var(--background) / 0.25) 72%,
+      transparent 100%
+    );
+  }
+  @media (min-width: 1024px) {
+    .dark .hero-showcase-fade-bottom {
+      background: linear-gradient(
+        to top,
+        hsl(var(--surface-dark)) 0%,
+        hsl(var(--surface-dark) / 0.98) 35%,
+        hsl(var(--surface-dark) / 0.4) 65%,
+        transparent 100%
+      );
+    }
+  }
+  @media (max-width: 1023px) {
+    .dark .hero-showcase-fade-bottom {
+      background: linear-gradient(
+        to top,
+        hsl(var(--surface-dark)) 0%,
+        hsl(var(--surface-dark) / 0.97) 40%,
+        transparent 100%
+      );
+    }
+  }
+  .dark .hero-showcase-side-fade--left {
+    background: linear-gradient(to right, hsl(var(--background)), transparent);
+  }
+  .dark .hero-showcase-side-fade--right {
     background: linear-gradient(to left, hsl(var(--background)), transparent);
   }
   @media (min-width: 1024px) {
-    .hero-showcase-side-fade {
-      width: 8rem;
-    }
-    .hero-showcase-side-fade--left {
+    .dark .hero-showcase-side-fade--left {
       background: linear-gradient(to right, hsl(var(--background)), hsl(var(--background) / 0.4) 40%, transparent);
     }
-    .hero-showcase-side-fade--right {
+    .dark .hero-showcase-side-fade--right {
       background: linear-gradient(to left, hsl(var(--background)), hsl(var(--background) / 0.4) 40%, transparent);
     }
   }
@@ -1251,9 +1252,12 @@
     font-size: 0.8125rem;
     font-weight: 600;
     letter-spacing: -0.01em;
-    color: rgba(255, 255, 255, 0.88);
+    color: hsl(var(--muted-foreground));
     white-space: nowrap;
     opacity: 0.92;
+  }
+  .dark .hero-showcase-logo-item {
+    color: rgba(255, 255, 255, 0.88);
   }
   @media (min-width: 640px) {
     .hero-showcase-logo-item { font-size: 0.9375rem; }
@@ -1295,6 +1299,7 @@
     }
   }
 </style>
+<link rel="stylesheet" href="wave-theme-sections.css" />
 </head>
 <body class="antialiased">
 
@@ -1306,7 +1311,7 @@
   <div class="absolute inset-0 dot-pattern opacity-[0.08] pointer-events-none"></div>
 
   <!-- Hero text -->
-  <div class="hero-copy relative pt-[60px] pb-[60px] px-4 sm:px-6 lg:px-8">
+  <div class="hero-copy relative pt-[60px] pb-[60px] lg:pt-[80px] lg:pb-[80px] px-4 sm:px-6 lg:px-8">
     <div class="max-w-3xl mx-auto text-center">
       <div class="flex items-center justify-center gap-2 text-sm text-muted-foreground">
         <span>Wave Digital × AI</span>
@@ -2793,39 +2798,38 @@
 </section>
 
 <!-- Contact CTA Section -->
-<section id="contact" class="relative text-white overflow-hidden" style="background: hsl(220 20% 6%);">
-  <!-- Subtle accent glow -->
+<section id="contact" class="contact-section relative overflow-hidden">
   <div class="absolute inset-0 pointer-events-none">
-    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] rounded-full opacity-[0.08]" style="background: radial-gradient(ellipse, hsl(188 70% 48%) 0%, transparent 70%); filter: blur(80px);"></div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] rounded-full opacity-[0.08] dark:opacity-[0.08]" style="background: radial-gradient(ellipse, hsl(188 70% 48%) 0%, transparent 70%); filter: blur(80px);"></div>
   </div>
 
   <div data-animate="fade-up" class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
-    <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full mb-6 border border-white/15">
+    <div class="contact-badge inline-flex items-center gap-2 px-3 py-1.5 rounded-full mb-6 border">
       <span class="relative flex h-1.5 w-1.5">
-        <span class="animate-ping absolute inline-flex h-full w-full rounded-full opacity-60 bg-white"></span>
-        <span class="relative inline-flex rounded-full h-1.5 w-1.5 bg-white"></span>
+        <span class="animate-ping absolute inline-flex h-full w-full rounded-full opacity-60 contact-badge-dot"></span>
+        <span class="relative inline-flex rounded-full h-1.5 w-1.5 contact-badge-dot"></span>
       </span>
-      <span class="text-[11px] font-medium tracking-wider uppercase opacity-70">Đang nhận dự án Q2 2026</span>
+      <span class="text-[11px] font-medium tracking-wider uppercase">Đang nhận dự án Q2 2026</span>
     </div>
 
-        <h2 class="heading-section">
+    <h2 class="heading-section">
       <span class="heading-title-base">Sẵn sàng Launching </span>
       <span class="text-gradient-headline">sản phẩm của bạn?</span>
     </h2>
-    <p class="mt-4 text-base sm:text-lg opacity-80 max-w-2xl mx-auto">
+    <p class="contact-desc mt-4 text-base sm:text-lg max-w-2xl mx-auto">
       Đặt lịch tư vấn miễn phí 30 phút với chuyên gia Wave Digital. Chúng tôi sẽ phân tích ý tưởng của bạn và đề xuất giải pháp phù hợp nhất.
     </p>
     <div class="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
-      <a href="#" class="inline-flex items-center justify-center gap-2 px-6 h-12 rounded-full font-medium transition hover:opacity-90" style="background: hsl(30 25% 95%); color: hsl(220 25% 10%);">
+      <a href="#" class="contact-cta-primary inline-flex items-center justify-center gap-2 px-6 h-12 rounded-full font-medium transition">
         <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"/></svg>
         Đặt lịch tư vấn miễn phí
       </a>
-      <a href="tel:+84" class="inline-flex items-center justify-center gap-2 px-6 h-12 rounded-full font-medium transition hover:bg-white/5" style="border: 1px solid hsl(0 0% 100% / 0.15);">
+      <a href="tel:+84933682278" class="contact-cta-secondary inline-flex items-center justify-center gap-2 px-6 h-12 rounded-full font-medium transition">
         <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
-        Hotline: 0900 000 000
+        Hotline: 0933 68 2278
       </a>
     </div>
-    <p class="mt-6 text-xs opacity-60">Không cam kết · Không phí ẩn · 100% miễn phí buổi đầu</p>
+    <p class="contact-footnote mt-6 text-xs">Không cam kết · Không phí ẩn · 100% miễn phí buổi đầu</p>
   </div>
 </section>
 

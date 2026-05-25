@@ -30,6 +30,8 @@
       .header-actions-group #lang-switch .lang-switch-btn{height:100%;min-height:0;align-self:stretch;}
       .header-actions-group .header-action-control.btn-accent{line-height:1;}
       .lang-switch-btn.is-active{background:hsl(var(--foreground));color:hsl(var(--background));}
+      #theme-toggle,#theme-toggle-mobile{color:hsl(var(--foreground));}
+      #theme-toggle:hover,#theme-toggle-mobile:hover{background:hsl(var(--muted));}
       .dark .light-only{display:none;}
       html:not(.dark) .dark-only{display:none;}
       .brand-logo{background:#fff;object-fit:contain;}
@@ -69,7 +71,10 @@
     if (window.WaveTheme?.apply) {
       window.WaveTheme.apply(dark);
     } else {
-      document.documentElement.classList.toggle('dark', dark);
+      const html = document.documentElement;
+      html.classList.toggle('dark', dark);
+      html.style.colorScheme = dark ? 'dark' : 'light';
+      html.style.backgroundColor = dark ? 'hsl(220, 20%, 6%)' : '#ffffff';
     }
     localStorage.setItem('theme', dark ? 'dark' : 'light');
   }

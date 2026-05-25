@@ -5,7 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="color-scheme" content="light dark" />
 <script src="theme-boot.js"></script>
-<style id="theme-critical">html{background-color:hsl(30,25%,98%)}html.dark{background-color:hsl(220,20%,6%)}</style>
+<style id="theme-critical">html{background-color:#fff}html.dark{background-color:hsl(220,20%,6%)}</style>
+<link rel="stylesheet" href="wave-tokens.css" />
+<link rel="stylesheet" href="wave-theme-sections.css" />
 <title>Case Studies — Wave Digital</title>
 <meta name="description" content="Khám phá dự án tiêu biểu Wave Digital: Website chuyển đổi, AI Marketing, AI Agent và giải pháp Custom AI cho doanh nghiệp Việt." />
 <script src="https://cdn.tailwindcss.com"></script>
@@ -30,32 +32,9 @@
   }
 </script>
 <style>
-  :root {
-    --background: 30 25% 98%;
-    --foreground: 220 25% 10%;
-    --muted: 220 14% 96%;
-    --muted-foreground: 220 9% 46%;
-    --border: 220 13% 91%;
-    --card: 0 0% 100%;
-  }
-  .dark {
-    --background: 220 20% 6%;
-    --foreground: 30 15% 95%;
-    --muted: 220 17% 11%;
-    --muted-foreground: 220 9% 60%;
-    --border: 220 15% 16%;
-    --card: 220 19% 8%;
-  }
-  html {
-    background-color: hsl(30 25% 98%);
-  }
-  html.dark {
-    background-color: hsl(220 20% 6%);
-  }
+  /* Tokens: wave-tokens.css */
   body {
     font-family: 'Geist', 'Inter', sans-serif;
-    background: hsl(var(--background));
-    color: hsl(var(--foreground));
     -webkit-font-smoothing: antialiased;
   }
   .heading-section {
@@ -66,13 +45,7 @@
   }
   @media (min-width: 640px) { .heading-section { font-size: 2.25rem; } }
   @media (min-width: 1024px) { .heading-section { font-size: 2.75rem; } }
-  .text-gradient-headline {
-    background: linear-gradient(102deg, #FFD4BC 0%, #FFB38E 42%, #F5A04A 78%, #E88B2A 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    color: transparent;
-  }
+  /* .text-gradient-headline — wave-tokens.css */
   .heading-title-base { color: hsl(var(--foreground)); }
   .btn-accent {
     background: hsl(var(--foreground));
@@ -145,25 +118,6 @@
     position: relative;
     overflow: hidden;
     border-radius: 1rem;
-    color: hsl(30 18% 96%);
-    background:
-      linear-gradient(155deg, hsl(222 38% 6%) 0%, hsl(220 32% 9%) 48%, hsl(218 28% 11%) 100%);
-    border: 1px solid hsl(30 55% 88% / 0.1);
-    box-shadow:
-      inset 0 1px 0 0 hsl(35 90% 82% / 0.14),
-      0 20px 44px -20px hsl(25 70% 35% / 0.45),
-      0 8px 24px -12px hsl(220 40% 4% / 0.5);
-  }
-  .cs-promo::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    background:
-      radial-gradient(ellipse 95% 75% at 108% -8%, rgba(255, 212, 188, 0.38) 0%, rgba(255, 179, 142, 0.14) 42%, transparent 68%),
-      radial-gradient(ellipse 70% 55% at -5% 105%, hsl(188 70% 48% / 0.14) 0%, transparent 58%),
-      linear-gradient(118deg, hsl(28 92% 58% / 0.2) 0%, hsl(22 78% 48% / 0.06) 38%, transparent 62%);
-    opacity: 1;
   }
   .cs-promo > * {
     position: relative;
@@ -178,9 +132,6 @@
     padding: 0.3rem 0.55rem;
     margin-bottom: 1rem;
     border-radius: 9999px;
-    color: hsl(32 40% 92%);
-    background: hsl(30 50% 95% / 0.08);
-    border: 1px solid hsl(35 75% 78% / 0.22);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
   }
@@ -190,11 +141,6 @@
     font-weight: 700;
     letter-spacing: -0.03em;
     line-height: 1.1;
-    background: linear-gradient(102deg, #ffe8d8 0%, #ffd4bc 28%, #ffb38e 55%, #f5a04a 82%, #e88b2a 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    filter: drop-shadow(0 1px 12px hsl(28 85% 55% / 0.25));
   }
   @media (min-width: 640px) {
     .cs-promo-days { font-size: 1.875rem; }
@@ -203,7 +149,6 @@
     margin-top: 0.5rem;
     font-size: 0.875rem;
     line-height: 1.55;
-    color: hsl(30 12% 88% / 0.82);
   }
   .cs-promo-cta {
     margin-top: 1.25rem;
@@ -215,22 +160,10 @@
     font-size: 0.875rem;
     font-weight: 500;
     border-radius: 0.5rem;
-    color: hsl(220 28% 10%);
-    background: linear-gradient(180deg, hsl(30 30% 98%) 0%, hsl(30 22% 94%) 100%);
-    border: 1px solid hsl(35 60% 88% / 0.5);
-    box-shadow: 0 1px 0 0 hsl(0 0% 100% / 0.6) inset, 0 8px 20px -8px hsl(25 60% 30% / 0.35);
     transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
   }
   .cs-promo-cta:hover {
     transform: translateY(-1px);
-    border-color: hsl(32 80% 72% / 0.65);
-    box-shadow:
-      0 1px 0 0 hsl(0 0% 100% / 0.65) inset,
-      0 10px 28px -6px hsl(28 75% 48% / 0.4),
-      0 0 0 1px hsl(255 179 142 / 0.2);
-  }
-  .cs-promo-cta svg {
-    color: hsl(28 85% 48%);
   }
   .cs-card.is-hidden { display: none; }
   .lang-switch { gap: 0.125rem; }

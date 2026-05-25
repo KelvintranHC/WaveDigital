@@ -3,7 +3,7 @@
  * Load đầu tiên trong <head>, trước Tailwind và CSS trang.
  */
 (function (w, d) {
-  var BG_LIGHT = 'hsl(30, 25%, 98%)';
+  var BG_LIGHT = 'hsl(0, 0%, 100%)';
   var BG_DARK = 'hsl(220, 20%, 6%)';
 
   function prefersDark() {

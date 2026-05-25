@@ -1,0 +1,303 @@
+/**
+ * Section surfaces — light: trắng + accent xanh · dark: band tối + cam đào
+ */
+
+/* Hero — light: glow xanh nhẹ trên nền trắng */
+html:not(.dark) .hero-gradient,
+html:not(.dark) .hero-section .hero-gradient {
+  background:
+    radial-gradient(ellipse 85% 50% at 50% -8%, hsl(199 89% 48% / 0.14), transparent 60%),
+    radial-gradient(ellipse 50% 40% at 88% 18%, hsl(188 92% 52% / 0.1), transparent 58%),
+    radial-gradient(ellipse 70% 50% at 12% 30%, hsl(210 85% 55% / 0.06), transparent 55%);
+}
+html:not(.dark) .hero-section .hero-gradient {
+  background:
+    radial-gradient(ellipse 90% 55% at 50% -5%, hsl(199 89% 48% / 0.12), transparent 62%),
+    radial-gradient(ellipse 55% 45% at 85% 25%, hsl(188 92% 52% / 0.08), transparent 58%),
+    radial-gradient(ellipse 85% 50% at 50% 100%, hsl(199 89% 42% / 0.05), transparent 70%);
+}
+/* Gallery fade — định nghĩa trong index.html + --fade-gallery tokens */
+
+html:not(.dark) .lang-switch-btn.is-active {
+  background: linear-gradient(135deg, hsl(199 89% 44%), hsl(210 85% 36%));
+  color: hsl(0 0% 100%);
+}
+html:not(.dark) .cs-tab.is-active {
+  background: linear-gradient(135deg, hsl(199 89% 44%), hsl(210 85% 36%));
+  color: hsl(0 0% 100%);
+  border-color: transparent;
+}
+
+.core-services-section,
+.works-section {
+  background: hsl(var(--surface-band));
+  color: hsl(var(--on-surface-band));
+}
+
+.core-services-section::before {
+  background: linear-gradient(
+    to bottom,
+    hsl(var(--surface-band-soft)),
+    hsl(var(--surface-band))
+  );
+}
+
+html:not(.dark) .core-services-ambient {
+  background:
+    radial-gradient(ellipse 80% 40% at 50% 0%, hsl(199 89% 48% / 0.09), transparent 58%),
+    radial-gradient(ellipse 55% 35% at 100% 15%, hsl(188 92% 52% / 0.06), transparent 55%);
+}
+.dark .core-services-ambient {
+  background:
+    radial-gradient(ellipse 80% 40% at 50% 0%, hsl(195 75% 78% / 0.06), transparent 58%),
+    radial-gradient(ellipse 60% 35% at 100% 20%, hsl(188 70% 48% / 0.04), transparent 55%);
+}
+
+.core-services-section .heading-title-base,
+.works-section .heading-title-base {
+  color: hsl(var(--on-surface-band));
+}
+
+.core-services-section .text-gradient-headline,
+.works-section .text-gradient-headline {
+  background: var(--gradient-display);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+html:not(.dark) .core-services-section .text-gradient-headline,
+html:not(.dark) .works-section .text-gradient-headline {
+  filter: drop-shadow(0 2px 14px hsl(199 89% 42% / 0.2));
+}
+.dark .core-services-section .text-gradient-headline,
+.dark .works-section .text-gradient-headline {
+  filter: drop-shadow(0 0 32px rgba(255, 179, 142, 0.28));
+}
+
+.core-service-index {
+  color: hsl(var(--on-surface-band-muted));
+}
+.core-service-line-track {
+  background: hsl(var(--on-surface-band) / 0.08);
+}
+html:not(.dark) .core-service-line-fill {
+  background: linear-gradient(90deg, hsl(199 89% 48%), hsl(210 85% 38%));
+}
+.core-service-graphic {
+  border-color: hsl(var(--surface-band-border));
+}
+
+.works-eyebrow {
+  color: hsl(var(--on-surface-band-muted));
+  opacity: 1;
+}
+.works-view-all {
+  border-color: hsl(var(--accent) / 0.25);
+  color: hsl(var(--primary));
+}
+html:not(.dark) .works-view-all:hover {
+  border-color: hsl(var(--accent) / 0.45);
+  background: hsl(var(--accent) / 0.06);
+}
+.dark .works-view-all {
+  border-color: hsl(var(--on-surface-band) / 0.18);
+  color: hsl(var(--on-surface-band));
+}
+.dark .works-view-all:hover {
+  border-color: hsl(var(--on-surface-band) / 0.32);
+  background: hsl(var(--on-surface-band) / 0.05);
+}
+
+.works-row {
+  background: hsl(var(--surface-band-soft));
+  border-color: hsl(var(--surface-band-border));
+}
+html:not(.dark) .works-row::before {
+  background:
+    radial-gradient(ellipse 75% 90% at 0% 40%, hsl(199 89% 48% / 0.1), transparent 58%),
+    radial-gradient(ellipse 55% 70% at 100% 15%, hsl(188 92% 52% / 0.08), transparent 52%),
+    radial-gradient(ellipse 45% 55% at 50% 110%, hsl(210 80% 70% / 0.05), transparent 48%);
+}
+.dark .works-row::before {
+  background:
+    radial-gradient(ellipse 75% 90% at 0% 40%, hsl(195 75% 78% / 0.14), transparent 58%),
+    radial-gradient(ellipse 55% 70% at 100% 15%, hsl(188 70% 62% / 0.1), transparent 52%),
+    radial-gradient(ellipse 45% 55% at 50% 110%, hsl(200 65% 85% / 0.07), transparent 48%);
+}
+.works-row:hover {
+  border-color: hsl(var(--accent) / 0.35);
+  box-shadow:
+    0 0 40px -14px hsl(var(--accent) / 0.18),
+    0 12px 40px -20px hsl(var(--foreground) / 0.06);
+}
+.works-metric + .works-metric {
+  border-top-color: hsl(var(--surface-band-border));
+}
+.works-metric-value {
+  color: hsl(var(--on-surface-band));
+}
+.works-metric-label {
+  color: hsl(var(--on-surface-band-muted));
+}
+
+.core-services-section .text-white,
+.works-section .text-white {
+  color: hsl(var(--on-surface-band));
+}
+.core-services-section a.text-white,
+.works-section a.text-white {
+  color: hsl(var(--on-surface-band-muted));
+}
+.core-services-section a.text-white:hover,
+.works-section a.text-white:hover,
+.works-section a.hover\:text-white:hover {
+  color: hsl(var(--primary));
+}
+
+/* Contact */
+.contact-section {
+  background: hsl(var(--background));
+  color: hsl(var(--foreground));
+}
+html:not(.dark) .contact-section {
+  background: linear-gradient(
+    180deg,
+    hsl(210 50% 99%) 0%,
+    hsl(var(--background)) 100%
+  );
+  border-top: 1px solid hsl(var(--border));
+}
+.dark .contact-section {
+  background: hsl(var(--surface-band));
+  color: hsl(var(--on-surface-band));
+}
+.contact-section .heading-title-base {
+  color: inherit;
+}
+html:not(.dark) .contact-badge {
+  border-color: hsl(var(--accent) / 0.25);
+  color: hsl(var(--primary));
+  background: hsl(var(--accent) / 0.06);
+}
+html:not(.dark) .contact-badge .contact-badge-dot {
+  background: hsl(var(--accent-highlight));
+}
+.dark .contact-badge {
+  border-color: hsl(var(--on-surface-band) / 0.15);
+  color: hsl(var(--on-surface-band-muted));
+}
+.dark .contact-badge .contact-badge-dot {
+  background: hsl(var(--on-surface-band));
+}
+.contact-section .contact-desc {
+  color: hsl(var(--muted-foreground));
+}
+.contact-section .contact-footnote {
+  color: hsl(var(--on-surface-band-subtle, var(--muted-foreground)));
+}
+html:not(.dark) .contact-cta-primary {
+  background: linear-gradient(135deg, hsl(199 89% 44%) 0%, hsl(210 85% 36%) 100%);
+  color: hsl(0 0% 100%);
+  box-shadow: 0 4px 20px -6px hsl(199 89% 42% / 0.4);
+}
+html:not(.dark) .contact-cta-primary:hover {
+  opacity: 0.95;
+  box-shadow: 0 8px 28px -6px hsl(199 89% 42% / 0.45);
+}
+.dark .contact-cta-primary {
+  background: hsl(var(--foreground));
+  color: hsl(var(--background));
+}
+html:not(.dark) .contact-cta-secondary {
+  border: 1px solid hsl(var(--accent) / 0.35);
+  color: hsl(var(--primary));
+}
+html:not(.dark) .contact-cta-secondary:hover {
+  background: hsl(var(--accent) / 0.08);
+}
+.dark .contact-cta-secondary {
+  border: 1px solid hsl(var(--on-surface-band) / 0.2);
+  color: hsl(var(--on-surface-band));
+}
+.dark .contact-cta-secondary:hover {
+  background: hsl(var(--on-surface-band) / 0.06);
+}
+
+/* Promo Case Studies — light */
+html:not(.dark) .cs-promo {
+  color: hsl(var(--foreground));
+  background: hsl(var(--card));
+  border: 1px solid hsl(var(--border));
+  box-shadow:
+    0 1px 0 0 hsl(var(--background)) inset,
+    0 12px 36px -16px hsl(199 89% 42% / 0.12);
+}
+html:not(.dark) .cs-promo::before {
+  background:
+    radial-gradient(ellipse 90% 70% at 100% 0%, hsl(199 89% 55% / 0.18) 0%, transparent 62%),
+    radial-gradient(ellipse 60% 50% at 0% 100%, hsl(188 92% 52% / 0.1) 0%, transparent 55%),
+    linear-gradient(118deg, hsl(210 85% 55% / 0.08) 0%, transparent 55%);
+}
+html:not(.dark) .cs-promo-badge {
+  color: hsl(205 75% 32%);
+  background: hsl(199 89% 48% / 0.1);
+  border-color: hsl(199 89% 42% / 0.25);
+}
+html:not(.dark) .cs-promo-days {
+  background: var(--gradient-display);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 2px 12px hsl(199 89% 42% / 0.2));
+}
+html:not(.dark) .cs-promo-desc {
+  color: hsl(var(--muted-foreground));
+}
+html:not(.dark) .cs-promo-cta {
+  background: linear-gradient(135deg, hsl(199 89% 44%) 0%, hsl(210 85% 36%) 100%);
+  color: hsl(0 0% 100%);
+  border-color: transparent;
+  box-shadow: 0 6px 20px -8px hsl(199 89% 42% / 0.4);
+}
+html:not(.dark) .cs-promo-cta svg {
+  color: hsl(0 0% 100%);
+}
+html:not(.dark) .cs-promo-cta:hover {
+  border-color: transparent;
+  box-shadow: 0 10px 28px -6px hsl(199 89% 42% / 0.45);
+}
+
+/* Promo — dark (giữ premium cam) */
+.dark .cs-promo {
+  color: hsl(30 18% 96%);
+  background: linear-gradient(155deg, hsl(222 38% 6%) 0%, hsl(220 32% 9%) 48%, hsl(218 28% 11%) 100%);
+  border: 1px solid hsl(30 55% 88% / 0.1);
+  box-shadow:
+    inset 0 1px 0 0 hsl(35 90% 82% / 0.14),
+    0 20px 44px -20px hsl(25 70% 35% / 0.45);
+}
+.dark .cs-promo::before {
+  background:
+    radial-gradient(ellipse 95% 75% at 108% -8%, rgba(255, 212, 188, 0.38) 0%, transparent 68%),
+    radial-gradient(ellipse 70% 55% at -5% 105%, hsl(188 70% 48% / 0.14) 0%, transparent 58%),
+    linear-gradient(118deg, hsl(28 92% 58% / 0.2) 0%, transparent 62%);
+}
+.dark .cs-promo-days {
+  background: var(--gradient-peach);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 1px 12px hsl(28 85% 55% / 0.25));
+}
+
+/* Process & UI accents — light */
+html:not(.dark) .process-track-fill,
+html:not(.dark) .process-step::after {
+  background: var(--gradient-display-accent);
+}
+html:not(.dark) .process-step-num {
+  background: var(--gradient-display);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}

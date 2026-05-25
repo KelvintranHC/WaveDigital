@@ -1,0 +1,131 @@
+/**
+ * Wave Digital — design tokens (light / dark)
+ * Light: nền trắng + gradient xanh sang trọng · Dark: nền tối + gradient cam đào
+ */
+:root {
+  color-scheme: light;
+
+  --background: 0 0% 100%;
+  --foreground: 215 45% 14%;
+  --primary: 205 88% 40%;
+  --primary-foreground: 0 0% 100%;
+  --muted: 210 40% 97%;
+  --muted-foreground: 215 14% 42%;
+  --border: 214 22% 90%;
+  --card: 0 0% 100%;
+  --accent: 199 89% 42%;
+  --accent-glow: 188 92% 48%;
+  --accent-highlight: 192 95% 55%;
+  --ring: 199 89% 42%;
+
+  --surface-band: 0 0% 100%;
+  --surface-band-soft: 210 50% 99%;
+  --on-surface-band: 215 45% 14%;
+  --on-surface-band-muted: 215 14% 42%;
+  --on-surface-band-subtle: 215 12% 55%;
+  --surface-band-border: 214 22% 90%;
+
+  --surface-dark: 0 0% 100%;
+  --surface-dark-soft: 210 45% 98%;
+
+  /* Gradient chữ & accent — xanh navy sang trọng + điểm nhấn cyan */
+  --gradient-display: linear-gradient(
+    118deg,
+    #9fd4f3 0%,
+    #5eb0e8 22%,
+    #2d8fd4 48%,
+    #1a6db5 72%,
+    #0f4d85 100%
+  );
+  --gradient-display-accent: linear-gradient(
+    90deg,
+    #6ec8ef 0%,
+    #3a9fd9 45%,
+    #1a6fb8 100%
+  );
+  --gradient-peach-display: var(--gradient-display);
+  --gradient-peach: var(--gradient-display);
+  --shadow-gradient: 0 2px 16px hsl(199 89% 42% / 0.22);
+
+  /* Gallery fade — xanh nhạt rõ, chuyển mượt (light) */
+  --fade-gallery: 205 48% 88%;
+  --fade-gallery-soft: 208 42% 93%;
+  --fade-gallery-top: 203 50% 90%;
+  --fade-gallery-mid: 200 45% 91%;
+}
+
+.dark {
+  color-scheme: dark;
+
+  --background: 220 20% 6%;
+  --foreground: 36 20% 96%;
+  --primary: 36 20% 96%;
+  --primary-foreground: 220 20% 6%;
+  --muted: 220 17% 11%;
+  --muted-foreground: 220 9% 62%;
+  --border: 220 15% 18%;
+  --card: 220 19% 8%;
+  --accent: 188 70% 48%;
+  --accent-glow: 195 65% 38%;
+  --accent-highlight: 188 70% 55%;
+  --ring: 188 70% 55%;
+
+  --surface-band: 222 47% 5%;
+  --surface-band-soft: 222 38% 8%;
+  --on-surface-band: 36 20% 96%;
+  --on-surface-band-muted: 220 9% 58%;
+  --on-surface-band-subtle: 220 9% 48%;
+  --surface-band-border: 220 15% 20%;
+
+  --surface-dark: 222 47% 5%;
+  --surface-dark-soft: 222 38% 8%;
+
+  --gradient-peach: linear-gradient(102deg, #FFD4BC 0%, #FFB38E 42%, #F5A04A 78%, #E88B2A 100%);
+  --gradient-peach-display: var(--gradient-peach);
+  --gradient-display: var(--gradient-peach);
+  --gradient-display-accent: linear-gradient(90deg, #FFD4BC 0%, #FFB38E 50%, #F0932B 100%);
+  --shadow-gradient: 0 0 32px rgba(255, 179, 142, 0.28);
+
+  --fade-gallery: 222 47% 5%;
+  --fade-gallery-soft: 222 38% 8%;
+  --fade-gallery-top: 220 20% 6%;
+  --fade-gallery-mid: 222 40% 7%;
+}
+
+html {
+  background-color: hsl(var(--background));
+}
+body {
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+}
+
+/* Headline gradient — toàn site */
+.text-gradient-headline,
+.text-gradient-accent {
+  background: var(--gradient-display);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+html:not(.dark) .text-gradient-headline,
+html:not(.dark) .text-gradient-accent {
+  filter: drop-shadow(var(--shadow-gradient));
+}
+
+/* CTA chính — light: xanh điểm nhấn */
+html:not(.dark) .btn-accent {
+  background: linear-gradient(135deg, hsl(199 89% 44%) 0%, hsl(210 85% 36%) 100%);
+  color: hsl(0 0% 100%);
+  box-shadow: 0 4px 20px -6px hsl(199 89% 42% / 0.45);
+}
+html:not(.dark) .btn-accent:hover {
+  box-shadow: 0 8px 28px -6px hsl(199 89% 42% / 0.5);
+}
+
+#theme-toggle:focus-visible,
+#theme-toggle-mobile:focus-visible {
+  outline: 2px solid hsl(var(--ring));
+  outline-offset: 2px;
+}
