@@ -5,6 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="color-scheme" content="light dark" />
 <script src="theme-boot.js"></script>
+<script src="locales/en.js"></script>
+<script src="wave-i18n.js"></script>
+<script src="cases-i18n-en.js"></script>
 <style id="theme-critical">html{background-color:#fff}html.dark{background-color:hsl(220,20%,6%)}</style>
 <link rel="stylesheet" href="wave-tokens.css" />
 <link rel="stylesheet" href="wave-theme-sections.css" />
@@ -82,8 +85,12 @@
 <script>
   const params = new URLSearchParams(location.search);
   const slug = params.get('slug') || '';
-  const data = window.CASE_STUDIES && window.CASE_STUDIES[slug];
+  const lang = window.WaveI18n?.getLang?.() || (localStorage.getItem('lang-ui') === 'en' ? 'en' : 'vi');
+  const raw = window.CASE_STUDIES && window.CASE_STUDIES[slug];
+  const data = raw && window.mergeCaseStudyLocale ? window.mergeCaseStudyLocale(raw, slug, lang) : raw;
   const root = document.getElementById('case-root');
+  const L = (k) => (window.WAVE_LOCALES?.en?.strings?.[k]) || '';
+  const t = (key, vi) => (lang === 'en' ? L(key) || vi : vi);
 
   function esc(s) {
     const d = document.createElement('div');
@@ -92,13 +99,14 @@
   }
 
   function renderNotFound() {
+    const listHref = lang === 'en' ? 'en/case-studies.html' : 'case-studies.html';
     root.innerHTML = `
       <section class="py-24 px-4 text-center">
-        <h1 class="heading-section mb-4">Không tìm thấy case study</h1>
-        <p class="text-muted-foreground mb-8">Liên kết có thể đã thay đổi hoặc không tồn tại.</p>
-        <a href="case-studies.html" class="btn-accent inline-flex px-6 h-11 rounded-full text-sm font-medium items-center">Về danh sách Case Studies</a>
+        <h1 class="heading-section mb-4">${t('csd.notFound.title', 'Không tìm thấy case study')}</h1>
+        <p class="text-muted-foreground mb-8">${t('csd.notFound.desc', 'Liên kết có thể đã thay đổi hoặc không tồn tại.')}</p>
+        <a href="${listHref}" class="btn-accent inline-flex px-6 h-11 rounded-full text-sm font-medium items-center">${t('csd.notFound.btn', 'Về danh sách Case Studies')}</a>
       </section>`;
-    document.title = 'Case Study không tìm thấy — Wave Digital';
+    document.title = t('csd.notFound.title', 'Case Study không tìm thấy') + ' — Wave Digital';
   }
 
   function renderCase(c) {
@@ -127,10 +135,12 @@
     const servicesHtml = c.services.map(s => `<span class="csd-tech">${s}</span>`).join('');
 
     const relatedHtml = (c.related || []).map(rs => {
-      const r = window.CASE_STUDIES[rs];
-      if (!r) return '';
+      const r0 = window.CASE_STUDIES[rs];
+      if (!r0) return '';
+      const r = window.mergeCaseStudyLocale ? window.mergeCaseStudyLocale(r0, rs, lang) : r0;
+      const href = (lang === 'en' ? 'en/case-study.html' : 'case-study.html') + '?slug=' + r.slug;
       return `
-        <a href="case-study.html?slug=${r.slug}" class="csd-related block">
+        <a href="${href}" class="csd-related block">
           <img src="${r.image}" alt="" loading="lazy" />
           <div class="p-3">
             <p class="text-[10px] uppercase tracking-wider text-muted-foreground font-semibold">${r.category}</p>
@@ -139,15 +149,34 @@
         </a>`;
     }).join('');
 
+    const lbl = {
+      home: t('csd.breadcrumb.home', 'Trang chủ'),
+      list: t('csd.breadcrumb.list', 'Case Studies'),
+      client: t('csd.client', 'Khách hàng'),
+      industry: t('csd.industry', 'Ngành'),
+      duration: t('csd.duration', 'Thời gian'),
+      year: t('csd.year', 'Năm triển khai'),
+      overview: t('csd.overview', 'Tổng quan dự án'),
+      challenge: t('csd.challenge', 'Vấn đề khách hàng'),
+      solution: t('csd.solution', 'Giải pháp Wave Digital'),
+      process: t('csd.process', 'Quy trình triển khai'),
+      tech: t('csd.tech', 'Công nghệ & công cụ'),
+      results: t('csd.results', 'Kết quả đạt được'),
+      related: t('csd.related', 'Case study liên quan'),
+    };
+    const homeHref = lang === 'en' ? 'en/index.html' : 'index.html';
+    const listHref = lang === 'en' ? 'en/case-studies.html' : 'case-studies.html';
+    const contactHref = homeHref + '#contact';
+
     root.innerHTML = `
       <section class="relative border-b border-border overflow-hidden">
         <div class="absolute inset-0 hero-gradient pointer-events-none"></div>
         <div class="absolute inset-0 dot-pattern opacity-[0.06] pointer-events-none"></div>
         <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
           <nav class="flex flex-wrap items-center gap-2 text-sm text-muted-foreground mb-8">
-            <a href="index.html" class="hover:text-foreground">Trang chủ</a>
+            <a href="${homeHref}" class="hover:text-foreground">${lbl.home}</a>
             <span class="opacity-40">/</span>
-            <a href="case-studies.html" class="hover:text-foreground">Case Studies</a>
+            <a href="${listHref}" class="hover:text-foreground">${lbl.list}</a>
             <span class="opacity-40">/</span>
             <span class="text-foreground font-medium line-clamp-1">${c.category}</span>
           </nav>
@@ -157,10 +186,10 @@
               <h1 class="heading-section heading-title-base">${c.title}</h1>
               <p class="mt-4 text-base sm:text-lg text-muted-foreground leading-relaxed">${c.subtitle}</p>
               <dl class="mt-6 grid grid-cols-2 gap-4 text-sm">
-                <div><dt class="text-muted-foreground">Khách hàng</dt><dd class="font-medium mt-0.5">${c.client}</dd></div>
-                <div><dt class="text-muted-foreground">Ngành</dt><dd class="font-medium mt-0.5">${c.industry}</dd></div>
-                <div><dt class="text-muted-foreground">Thời gian</dt><dd class="font-medium mt-0.5">${c.duration}</dd></div>
-                <div><dt class="text-muted-foreground">Năm triển khai</dt><dd class="font-medium mt-0.5">${c.year}</dd></div>
+                <div><dt class="text-muted-foreground">${lbl.client}</dt><dd class="font-medium mt-0.5">${c.client}</dd></div>
+                <div><dt class="text-muted-foreground">${lbl.industry}</dt><dd class="font-medium mt-0.5">${c.industry}</dd></div>
+                <div><dt class="text-muted-foreground">${lbl.duration}</dt><dd class="font-medium mt-0.5">${c.duration}</dd></div>
+                <div><dt class="text-muted-foreground">${lbl.year}</dt><dd class="font-medium mt-0.5">${c.year}</dd></div>
               </dl>
               <div class="mt-5 flex flex-wrap gap-2">${servicesHtml}</div>
             </div>
@@ -182,31 +211,31 @@
           <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
             <div class="lg:col-span-8 space-y-8">
               <div class="csd-section">
-                <h2 class="heading-block mb-4">Tổng quan dự án</h2>
+                <h2 class="heading-block mb-4">${lbl.overview}</h2>
                 <p class="text-muted-foreground leading-relaxed">${c.overview}</p>
               </div>
               <div class="csd-section">
-                <h2 class="heading-block mb-4">Vấn đề khách hàng</h2>
-                <p class="text-sm text-muted-foreground mb-4">Những thách thức chính trước khi hợp tác với Wave Digital:</p>
+                <h2 class="heading-block mb-4">${lbl.challenge}</h2>
+                <p class="text-sm text-muted-foreground mb-4">${t('csd.challengeIntro', 'Những thách thức chính trước khi hợp tác với Wave Digital:')}</p>
                 <ul class="csd-list">${problemsHtml}</ul>
               </div>
               <div class="csd-section">
-                <h2 class="heading-block mb-4">Giải pháp Wave Digital</h2>
-                <p class="text-sm text-muted-foreground mb-4">Lộ trình triển khai tập trung vào KPI kinh doanh, không chỉ deliverable kỹ thuật:</p>
+                <h2 class="heading-block mb-4">${lbl.solution}</h2>
+                <p class="text-sm text-muted-foreground mb-4">${t('csd.solutionIntro', 'Lộ trình triển khai tập trung vào KPI kinh doanh, không chỉ deliverable kỹ thuật:')}</p>
                 <ul class="csd-list">${solutionHtml}</ul>
               </div>
               <div class="csd-section">
-                <h2 class="heading-block mb-4">Quy trình triển khai</h2>
+                <h2 class="heading-block mb-4">${lbl.process}</h2>
                 <div class="space-y-0">${processHtml}</div>
               </div>
               <div class="csd-section">
-                <h2 class="heading-block mb-4">Công nghệ &amp; công cụ</h2>
-                <p class="text-sm text-muted-foreground mb-4">Stack được chọn theo yêu cầu scale, bảo mật và khả năng vận hành lâu dài:</p>
+                <h2 class="heading-block mb-4">${lbl.tech}</h2>
+                <p class="text-sm text-muted-foreground mb-4">${t('csd.techIntro', 'Stack được chọn theo yêu cầu scale, bảo mật và khả năng vận hành lâu dài:')}</p>
                 <div class="flex flex-wrap gap-2">${techHtml}</div>
               </div>
               <div class="csd-section">
-                <h2 class="heading-block mb-4">Kết quả đạt được</h2>
-                <p class="text-sm text-muted-foreground mb-4">Số liệu đo từ analytics, CRM và báo cáo vận hành sau go-live (đã ẩn danh theo NDA):</p>
+                <h2 class="heading-block mb-4">${lbl.results}</h2>
+                <p class="text-sm text-muted-foreground mb-4">${t('csd.resultsIntro', 'Số liệu đo từ analytics, CRM và báo cáo vận hành sau go-live (đã ẩn danh theo NDA):')}</p>
                 <ul class="csd-list">${resultsHtml}</ul>
               </div>
               <div class="csd-section csd-quote">
@@ -217,7 +246,7 @@
             </div>
             <aside class="lg:col-span-4 space-y-6">
               <div class="lg:sticky lg:top-24">
-                <h3 class="font-semibold mb-4 text-sm uppercase tracking-wider text-muted-foreground">Case study liên quan</h3>
+                <h3 class="font-semibold mb-4 text-sm uppercase tracking-wider text-muted-foreground">${lbl.related}</h3>
                 <div class="grid grid-cols-1 gap-4">${relatedHtml}</div>
               </div>
             </aside>
@@ -228,13 +257,13 @@
       <section class="border-t border-border bg-muted/30 py-16">
         <div class="max-w-3xl mx-auto px-4 text-center">
           <h2 class="heading-section">
-            <span class="heading-title-base">Bạn muốn kết quả </span>
-            <span class="text-gradient-headline">tương tự?</span>
+            <span class="heading-title-base">${t('csd.cta.title1', 'Bạn muốn kết quả ')}</span>
+            <span class="text-gradient-headline">${t('csd.cta.title2', 'tương tự?')}</span>
           </h2>
-          <p class="mt-4 text-muted-foreground">Wave Digital phân tích bài toán miễn phí 30 phút và đề xuất lộ trình phù hợp — Website, AI Marketing, AI Agent hoặc Custom AI.</p>
+          <p class="mt-4 text-muted-foreground">${t('csd.cta.desc', 'Wave Digital phân tích bài toán miễn phí 30 phút và đề xuất lộ trình phù hợp — Website, AI Marketing, AI Agent hoặc Custom AI.')}</p>
           <div class="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
-            <a href="index.html#contact" class="btn-accent inline-flex items-center justify-center gap-2 px-6 h-11 rounded-full text-sm font-medium">Nhận tư vấn miễn phí</a>
-            <a href="case-studies.html" class="inline-flex items-center justify-center px-6 h-11 rounded-full text-sm font-medium border border-border hover:bg-muted">Xem thêm case study</a>
+            <a href="${contactHref}" class="btn-accent inline-flex items-center justify-center gap-2 px-6 h-11 rounded-full text-sm font-medium">${t('csd.cta.btn', 'Nhận tư vấn miễn phí')}</a>
+            <a href="${listHref}" class="inline-flex items-center justify-center px-6 h-11 rounded-full text-sm font-medium border border-border hover:bg-muted">${t('csd.cta.more', 'Xem thêm case study')}</a>
           </div>
         </div>
       </section>`;
@@ -244,6 +273,8 @@
     renderNotFound();
   } else {
     renderCase(data);
+    document.dispatchEvent(new CustomEvent('wave-case-study-rendered'));
+    if (lang === 'en' && window.WaveI18n) window.WaveI18n.apply('en');
   }
 </script>
 </body>

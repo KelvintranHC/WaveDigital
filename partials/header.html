@@ -8,37 +8,39 @@
         </span>
       </a>
 
-      <nav class="hidden lg:flex items-center gap-1" aria-label="Menu chính">
-        <a href="index.html#core-services" class="px-3 py-2 text-sm font-medium hover:bg-muted rounded-md" data-nav="services">Giải pháp</a>
-        <a href="index.html#deliverables" class="px-3 py-2 text-sm font-medium hover:bg-muted rounded-md" data-nav="launching">Launching</a>
-        <a href="index.html#process" class="px-3 py-2 text-sm font-medium hover:bg-muted rounded-md" data-nav="process">Quy trình</a>
-        <a href="case-studies.html" class="px-3 py-2 text-sm font-medium hover:bg-muted rounded-md" data-nav="case-studies">Case Studies</a>
-        <a href="index.html#faq" class="px-3 py-2 text-sm font-medium hover:bg-muted rounded-md" data-nav="about">Về chúng tôi</a>
+      <nav class="hidden lg:flex items-center gap-1" data-i18n-attr="aria-label" data-i18n="nav.menuMain" aria-label="Menu chính">
+        <a href="index.html#core-services" class="px-3 py-2 text-sm font-medium hover:bg-muted rounded-md" data-nav="services" data-i18n="nav.services">Giải pháp</a>
+        <a href="index.html#deliverables" class="px-3 py-2 text-sm font-medium hover:bg-muted rounded-md" data-nav="launching" data-i18n="nav.launching">Launching</a>
+        <a href="index.html#process" class="px-3 py-2 text-sm font-medium hover:bg-muted rounded-md" data-nav="process" data-i18n="nav.process">Quy trình</a>
+        <a href="case-studies.html" class="px-3 py-2 text-sm font-medium hover:bg-muted rounded-md" data-nav="case-studies" data-i18n="nav.caseStudies">Case Studies</a>
+        <a href="index.html#faq" class="px-3 py-2 text-sm font-medium hover:bg-muted rounded-md" data-nav="about" data-i18n="nav.about">Về chúng tôi</a>
       </nav>
 
       <div class="hidden lg:flex items-center gap-2 shrink-0 header-actions-group">
         <a href="#" class="flex items-center justify-center w-9 h-9 hover:bg-muted rounded-md" aria-label="X / Twitter">
           <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
         </a>
-        <div id="lang-switch" class="lang-switch header-action-control inline-flex items-center p-0.5 border border-border rounded-md bg-muted/40 shrink-0" role="group" aria-label="Chọn ngôn ngữ">
+        <div id="lang-switch" class="lang-switch header-action-control inline-flex items-center p-0.5 border border-border rounded-md bg-muted/40 shrink-0" role="group" data-i18n-attr="aria-label" data-i18n="nav.langGroup" aria-label="Chọn ngôn ngữ">
           <button type="button" class="lang-switch-btn is-active" data-lang="vn" aria-pressed="true" aria-label="Tiếng Việt" title="Tiếng Việt">VN</button>
-          <button type="button" class="lang-switch-btn" data-lang="en" aria-pressed="false" aria-label="English" title="English (sắp ra mắt)">ENG</button>
+          <button type="button" class="lang-switch-btn" data-lang="en" aria-pressed="false" aria-label="English" title="English">ENG</button>
         </div>
         <a href="index.html#contact" class="btn-accent header-action-control inline-flex items-center justify-center gap-1.5 px-3 sm:px-4 rounded-md text-sm font-medium shrink-0">
           <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"/></svg>
-          Tư vấn miễn phí
+          <span data-i18n="nav.cta">Tư vấn miễn phí</span>
         </a>
       </div>
 
       <div class="mobile-header-actions flex lg:hidden items-center gap-1.5 shrink-0">
-        <div id="lang-switch-mobile" class="lang-switch inline-flex items-center p-0.5 h-10 border border-border rounded-md bg-muted/40" role="group" aria-label="Chọn ngôn ngữ">
+        <div id="lang-switch-mobile" class="lang-switch inline-flex items-center p-0.5 h-10 border border-border rounded-md bg-muted/40" role="group" data-i18n-attr="aria-label" data-i18n="nav.langGroup" aria-label="Chọn ngôn ngữ">
           <button type="button" class="lang-switch-btn is-active" data-lang="vn" aria-pressed="true" aria-label="Tiếng Việt" title="Tiếng Việt">VN</button>
-          <button type="button" class="lang-switch-btn" data-lang="en" aria-pressed="false" aria-label="English" title="English (sắp ra mắt)">ENG</button>
+          <button type="button" class="lang-switch-btn" data-lang="en" aria-pressed="false" aria-label="English" title="English">ENG</button>
         </div>
         <button
           type="button"
           id="mobile-menu-toggle"
           class="mobile-menu-toggle flex items-center justify-center w-10 h-10 rounded-md border border-border hover:bg-muted"
+          data-i18n-attr="aria-label"
+          data-i18n="nav.menuOpen"
           aria-label="Mở menu"
           aria-expanded="false"
           aria-controls="mobile-menu-panel"
@@ -61,6 +63,8 @@
     class="mobile-menu-panel"
     role="dialog"
     aria-modal="true"
+    data-i18n-attr="aria-label"
+    data-i18n="nav.mobileNav"
     aria-label="Menu điều hướng"
   >
     <div class="mobile-menu-panel-head">
@@ -73,6 +77,8 @@
       <button
         type="button"
         class="mobile-menu-close flex items-center justify-center w-10 h-10 rounded-md border border-border hover:bg-muted"
+        data-i18n-attr="aria-label"
+        data-i18n="nav.menuClose"
         aria-label="Đóng menu"
         data-mobile-menu-close
       >
@@ -82,18 +88,18 @@
       </button>
     </div>
 
-    <nav class="mobile-menu-nav" aria-label="Menu chính">
-      <a href="index.html#core-services" class="mobile-menu-link" data-nav="services">Giải pháp</a>
-      <a href="index.html#deliverables" class="mobile-menu-link" data-nav="launching">Launching</a>
-      <a href="index.html#process" class="mobile-menu-link" data-nav="process">Quy trình</a>
-      <a href="case-studies.html" class="mobile-menu-link" data-nav="case-studies">Case Studies</a>
-      <a href="index.html#faq" class="mobile-menu-link" data-nav="about">Về chúng tôi</a>
+    <nav class="mobile-menu-nav" data-i18n-attr="aria-label" data-i18n="nav.menuMain" aria-label="Menu chính">
+      <a href="index.html#core-services" class="mobile-menu-link" data-nav="services" data-i18n="nav.services">Giải pháp</a>
+      <a href="index.html#deliverables" class="mobile-menu-link" data-nav="launching" data-i18n="nav.launching">Launching</a>
+      <a href="index.html#process" class="mobile-menu-link" data-nav="process" data-i18n="nav.process">Quy trình</a>
+      <a href="case-studies.html" class="mobile-menu-link" data-nav="case-studies" data-i18n="nav.caseStudies">Case Studies</a>
+      <a href="index.html#faq" class="mobile-menu-link" data-nav="about" data-i18n="nav.about">Về chúng tôi</a>
     </nav>
 
     <div class="mobile-menu-panel-foot">
       <a href="index.html#contact" class="btn-accent mobile-menu-cta inline-flex items-center justify-center gap-2 w-full h-11 rounded-md text-sm font-medium" data-mobile-menu-close>
         <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"/></svg>
-        Tư vấn miễn phí
+        <span data-i18n="nav.cta">Tư vấn miễn phí</span>
       </a>
     </div>
   </aside>

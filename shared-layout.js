@@ -65,7 +65,9 @@
     document.head.appendChild(style);
   }
 
-  const base = new URL('.', window.location.href).href;
+  const base = (typeof location !== 'undefined' && /\/en(\/|$)/.test(location.pathname))
+    ? new URL('../', location.href).href
+    : new URL('.', location.href).href;
 
   function applyTheme(dark) {
     if (window.WaveTheme?.apply) {
@@ -108,15 +110,21 @@
 
   function initLangSwitch() {
     const stored = localStorage.getItem('lang-ui');
-    if (stored === 'en') syncLangButtons('en');
+    const lang = stored === 'en' ? 'en' : 'vn';
+    syncLangButtons(lang);
 
     document.querySelectorAll('.lang-switch').forEach((langSwitch) => {
       if (langSwitch.dataset.bound) return;
       langSwitch.dataset.bound = '1';
       langSwitch.querySelectorAll('.lang-switch-btn').forEach((btn) => {
         btn.addEventListener('click', () => {
-          syncLangButtons(btn.dataset.lang);
-          localStorage.setItem('lang-ui', btn.dataset.lang);
+          const next = btn.dataset.lang === 'en' ? 'en' : 'vi';
+          syncLangButtons(next === 'en' ? 'en' : 'vn');
+          if (window.WaveI18n) {
+            window.WaveI18n.setLang(next);
+          } else {
+            localStorage.setItem('lang-ui', next === 'en' ? 'en' : 'vn');
+          }
         });
       });
     });

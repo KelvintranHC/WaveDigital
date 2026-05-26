@@ -1,14 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="color-scheme" content="light dark" />
 <script src="theme-boot.js"></script>
+<script src="locales/en.js"></script>
+<script src="wave-i18n.js"></script>
 <style id="theme-critical">html{background-color:#fff}html.dark{background-color:hsl(220,20%,6%)}</style>
 <link rel="stylesheet" href="wave-tokens.css" />
 <title>Wave Digital — Giải pháp AI trọn bộ Launching sản phẩm</title>
 <meta name="description" content="Wave Digital ứng dụng AI để cung cấp giải pháp tổng thể Launching sản phẩm: Website chuyển đổi, AI Marketing, AI Agent — biến ý tưởng thành hiện thực." />
+<meta property="og:title" content="Wave Digital | Giải pháp AI Launching sản phẩm" />
+<meta property="og:description" content="Từ ý tưởng đến go-live trong 30 ngày. Website, AI Marketing và AI Agent — một đối tác tích hợp." />
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="vi_VN" />
+<meta property="og:locale:alternate" content="en_US" />
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1341,7 +1348,7 @@
       <div class="flex items-center justify-center gap-2 text-sm text-muted-foreground">
         <span>Wave Digital × AI</span>
         <span class="opacity-50">•</span>
-        <a href="#launching" class="underline underline-offset-4 hover:text-foreground transition decoration-foreground/30">Khám phá gói Launching trọn bộ</a>
+        <a href="#launching" class="underline underline-offset-4 hover:text-foreground transition decoration-foreground/30" data-i18n="hero.eyebrowLink">Khám phá gói Launching trọn bộ</a>
       </div>
 
       <h1 class="heading-hero mt-5">
@@ -1349,15 +1356,15 @@
         <span class="text-gradient-headline">and scale better.</span>
       </h1>
 
-      <p class="mt-6 max-w-xl mx-auto text-base sm:text-lg text-muted-foreground leading-relaxed">
+      <p class="mt-6 max-w-xl mx-auto text-base sm:text-lg text-muted-foreground leading-relaxed" data-i18n="hero.subtitle">
         Giải pháp AI trọn bộ để Launching sản phẩm cho doanh nghiệp. Một đối tác — đầy đủ Website chuyển đổi, AI Marketing, AI Agent. Không cần tìm 3-4 đơn vị, không lo phình chi phí nhân sự.
       </p>
 
       <div class="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
-        <a href="#contact" class="btn-accent inline-flex items-center justify-center px-6 h-11 rounded-full font-medium transition">
+        <a href="#contact" class="btn-accent inline-flex items-center justify-center px-6 h-11 rounded-full font-medium transition" data-i18n="hero.ctaPrimary">
           Nhận tư vấn miễn phí
         </a>
-        <a href="#launching" class="inline-flex items-center justify-center px-6 h-11 border border-border rounded-full font-medium hover:bg-muted transition">
+        <a href="#launching" class="inline-flex items-center justify-center px-6 h-11 border border-border rounded-full font-medium hover:bg-muted transition" data-i18n="hero.ctaSecondary">
           Xem gói Launching
         </a>
       </div>
@@ -1627,12 +1634,12 @@
 
     <!-- Section Header -->
     <div class="mb-16 sm:mb-20">
-      <div data-animate="fade-up" class="text-[11px] font-mono tracking-[0.3em] opacity-60 mb-5">
+      <div data-animate="fade-up" class="text-[11px] font-mono tracking-[0.3em] opacity-60 mb-5" data-i18n="services.eyebrow">
         ( DỊCH VỤ CỐT LÕI )
       </div>
       <h2 class="heading-section uppercase">
-        <span class="heading-title-base">Giải pháp AI giải quyết</span><br/>
-        <span class="text-gradient-headline">vấn đề thực của doanh nghiệp</span>
+        <span class="heading-title-base" data-i18n="services.heading1">Giải pháp AI giải quyết</span><br/>
+        <span class="text-gradient-headline" data-i18n="services.heading2">vấn đề thực của doanh nghiệp</span>
         <span class="inline-flex items-center justify-center w-6 h-6 sm:w-7 sm:h-7 rounded-full border border-white/30 ml-2 align-middle">
           <span class="w-1 h-1 rounded-full bg-white"></span>
         </span>
@@ -1652,10 +1659,10 @@
             </h3>
           </div>
           <div>
-            <p class="text-sm sm:text-base leading-relaxed opacity-80">
+            <p class="text-sm sm:text-base leading-relaxed opacity-80" data-i18n="services.s1.body" data-i18n-html>
               Chúng tôi phân tích <strong class="text-white">mục tiêu kinh doanh, đối tượng khách hàng và sản phẩm</strong> để xây dựng website chuẩn SEO bằng Next.js 15. Load <strong class="text-white">dưới 1 giây</strong>, tối ưu AI-friendly để ChatGPT/Claude index nội dung tốt — vượt trội WordPress về tốc độ và <strong class="text-white">bảo mật doanh nghiệp</strong>.
             </p>
-            <a href="case-study.html?slug=website-travel" class="service-case-btn inline-flex items-center gap-2 mt-6 text-sm font-medium text-white">
+            <a href="case-study.html?slug=website-travel" class="service-case-btn inline-flex items-center gap-2 mt-6 text-sm font-medium text-white" data-i18n="services.s1.link">
               Xem case study Website
               <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
             </a>
@@ -1787,13 +1794,13 @@
     <div class="max-w-3xl mb-12 sm:mb-14 text-center mx-auto" data-animate="fade-up">
       <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-border text-[11px] font-medium uppercase tracking-[0.15em] mb-5 text-muted-foreground">
         <span class="w-1 h-1 rounded-full bg-current opacity-50"></span>
-        Quy trình minh bạch
+        <span data-i18n="process.badge">Quy trình minh bạch</span>
       </div>
       <h2 class="heading-section">
-        <span class="heading-title-base">From idea to launch</span><br/>
-        <span class="text-gradient-headline">in 30 days</span>
+        <span class="heading-title-base" data-i18n="process.heading1">From idea to launch</span><br/>
+        <span class="text-gradient-headline" data-i18n="process.heading2">in 30 days</span>
       </h2>
-      <p class="mt-4 text-base sm:text-lg text-muted-foreground">
+      <p class="mt-4 text-base sm:text-lg text-muted-foreground" data-i18n="process.subtitle">
         30 ngày — deliverables rõ từng tuần, bạn luôn nắm tiến độ.
       </p>
     </div>
@@ -1934,13 +1941,13 @@
 
     <div data-animate="fade-up" class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-8 mb-12 sm:mb-16">
       <div>
-        <p class="works-eyebrow">( DỰ ÁN TIÊU BIỂU )</p>
+        <p class="works-eyebrow" data-i18n="works.eyebrow">( DỰ ÁN TIÊU BIỂU )</p>
         <h2 class="heading-section uppercase max-w-2xl">
-          <span class="heading-title-base">Đồng hành </span>
-          <span class="text-gradient-headline">thay đổi có ý nghĩa</span>
+          <span class="heading-title-base" data-i18n="works.heading1">Đồng hành </span>
+          <span class="text-gradient-headline" data-i18n="works.heading2">thay đổi có ý nghĩa</span>
         </h2>
       </div>
-      <a href="case-studies.html" class="works-view-all">
+      <a href="case-studies.html" class="works-view-all" data-i18n="works.viewAll">
         Xem tất cả
         <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
       </a>
@@ -2092,18 +2099,18 @@
 </section>
 
 <!-- Why Wave Digital - Comparison -->
-<section class="relative">
+<section id="compare" class="relative">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
     <div class="max-w-3xl mb-12 text-center mx-auto">
       <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-muted text-[11px] font-medium uppercase tracking-[0.15em] mb-5 text-muted-foreground">
         <span class="w-1 h-1 rounded-full bg-current opacity-50"></span>
-        Tại sao chọn Wave Digital
+        <span data-i18n="compare.badge">Tại sao chọn Wave Digital</span>
       </div>
       <h2 class="heading-section">
-        <span class="heading-title-base">Wave Digital vs </span>
-        <span class="text-gradient-headline">Cách làm truyền thống</span>
+        <span class="heading-title-base" data-i18n="compare.heading1">Wave Digital vs </span>
+        <span class="text-gradient-headline" data-i18n="compare.heading2">Cách làm truyền thống</span>
       </h2>
-      <p class="mt-4 text-base sm:text-lg text-muted-foreground">
+      <p class="mt-4 text-base sm:text-lg text-muted-foreground" data-i18n="compare.subtitle">
         So sánh thẳng thắn để bạn ra quyết định sáng suốt. Không "self-claim", chỉ con số thật.
       </p>
     </div>
@@ -2209,13 +2216,13 @@
       <div>
         <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-border text-[11px] font-medium uppercase tracking-[0.15em] mb-5 text-muted-foreground">
           <span class="w-1 h-1 rounded-full bg-current opacity-50"></span>
-          Deliverables
+          <span data-i18n="deliver.badge2">Deliverables</span>
         </div>
         <h2 class="heading-section">
-          <span class="heading-title-base">Master Plan 3 tháng — </span>
-          <span class="text-gradient-headline">Kết quả bạn nhận được</span>
+          <span class="heading-title-base" data-i18n="deliver.heading1b">Master Plan 3 tháng — </span>
+          <span class="text-gradient-headline" data-i18n="deliver.heading2b">Kết quả bạn nhận được</span>
         </h2>
-        <p class="mt-4 text-base sm:text-lg text-muted-foreground">
+        <p class="mt-4 text-base sm:text-lg text-muted-foreground" data-i18n="deliver.body">
           Bộ deliverables chi tiết, đo lường được, giao đúng tiến độ. Mỗi sản phẩm đầu ra đều có quality checklist và được duyệt qua quy trình review chặt chẽ trước khi bàn giao.
         </p>
         <ul data-stagger class="mt-6 space-y-3">
@@ -2257,7 +2264,7 @@
           </li>
         </ul>
         <div class="mt-8">
-          <a href="#contact" class="btn-accent inline-flex items-center gap-2 px-6 py-3 rounded-md font-medium transition">
+          <a href="#contact" class="btn-accent inline-flex items-center gap-2 px-6 py-3 rounded-md font-medium transition" data-i18n="deliver.cta">
             Nhận tư vấn miễn phí
             <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
           </a>
@@ -2270,11 +2277,11 @@
         <!-- Floating stats -->
         <div class="absolute -top-4 -left-4 rounded-xl p-3 shadow-lg hidden md:block bg-foreground text-background">
           <div class="text-2xl font-bold tracking-tight">90</div>
-          <div class="text-xs opacity-70">Ngày launching</div>
+          <div class="text-xs opacity-70" data-i18n="deliver.stat1">Ngày launching</div>
         </div>
         <div class="absolute -bottom-4 -right-4 rounded-xl p-3 shadow-lg hidden md:block border border-border bg-card">
           <div class="text-2xl font-bold tracking-tight">100%</div>
-          <div class="text-xs opacity-70">AI-powered</div>
+          <div class="text-xs opacity-70" data-i18n="deliver.stat2">AI-powered</div>
         </div>
       </div>
     </div>
@@ -2287,13 +2294,13 @@
     <div class="text-center max-w-3xl mx-auto">
       <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-muted text-[11px] font-medium uppercase tracking-[0.15em] mb-5 text-muted-foreground">
         <span class="w-1 h-1 rounded-full bg-current opacity-50"></span>
-        Khách hàng tin tưởng
+        <span data-i18n="home.testimonials.badge">Khách hàng tin tưởng</span>
       </div>
       <h2 class="heading-section">
-        <span class="heading-title-base">Doanh nghiệp đã Launching </span>
-        <span class="text-gradient-headline">cùng Wave Digital</span>
+        <span class="heading-title-base" data-i18n="home.testimonials.heading1">Doanh nghiệp đã Launching </span>
+        <span class="text-gradient-headline" data-i18n="home.testimonials.heading2">cùng Wave Digital</span>
       </h2>
-      <p class="mt-4 text-base sm:text-lg text-muted-foreground">
+      <p class="mt-4 text-base sm:text-lg text-muted-foreground" data-i18n="home.testimonials.subtitle">
         Hơn 100+ doanh nghiệp đã tin tưởng Wave Digital để biến ý tưởng thành sản phẩm thực tế. Đây là những gì khách hàng nói về chúng tôi.
       </p>
     </div>
@@ -2623,29 +2630,29 @@
 </section>
 
 <!-- Wave Digital Stats Section -->
-<section class="relative">
+<section id="about" class="relative">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
       <div>
         <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-muted text-[11px] font-medium uppercase tracking-[0.15em] mb-5 text-muted-foreground">
           <span class="w-1 h-1 rounded-full bg-current opacity-50"></span>
-          Về Wave Digital
+          <span data-i18n="home.about.badge">Về Wave Digital</span>
         </div>
         <h2 class="heading-section">
-          <span class="heading-title-base">Đơn vị tiên phong </span>
-          <span class="text-gradient-headline">ứng dụng AI cho doanh nghiệp</span>
+          <span class="heading-title-base" data-i18n="home.about.heading1">Đơn vị tiên phong </span>
+          <span class="text-gradient-headline" data-i18n="home.about.heading2">ứng dụng AI cho doanh nghiệp</span>
         </h2>
-        <p class="mt-4 text-base sm:text-lg text-muted-foreground">
+        <p class="mt-4 text-base sm:text-lg text-muted-foreground" data-i18n="home.about.body">
           Wave Digital là đội ngũ chuyên gia về công nghệ AI, Marketing và Phát triển sản phẩm. Chúng tôi giúp doanh nghiệp Việt Nam tận dụng AI để Launching sản phẩm nhanh chóng, hiệu quả và tiết kiệm chi phí.
         </p>
         <div class="mt-6">
-          <a href="#contact" class="inline-flex items-center gap-2 text-sm font-medium hover:underline">
+          <a href="#contact" class="inline-flex items-center gap-2 text-sm font-medium hover:underline" data-i18n="home.about.link">
             Gặp đội ngũ Wave Digital
             <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
           </a>
         </div>
         <div class="mt-8">
-          <p class="text-xs text-muted-foreground uppercase tracking-wider mb-3">Đối tác công nghệ</p>
+          <p class="text-xs text-muted-foreground uppercase tracking-wider mb-3" data-i18n="home.about.partners">Đối tác công nghệ</p>
           <div class="flex flex-wrap items-center gap-x-6 gap-y-3">
             <div class="flex items-center gap-1.5 text-sm font-semibold opacity-70">
               <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 12h4v8h4v-6h4v6h4v-8h4z"/></svg>
@@ -2673,23 +2680,23 @@
       <div data-stagger class="grid grid-cols-2 gap-6">
         <div class="rounded-xl p-6 transition-all hover:border-foreground/30 bg-card border border-border">
           <div class="text-5xl font-bold mb-2 tracking-tight">100<span class="text-muted-foreground">+</span></div>
-          <div class="text-sm font-medium mb-1">Doanh nghiệp tin tưởng</div>
-          <p class="text-xs text-muted-foreground mt-2">Các thương hiệu Việt và quốc tế đã đồng hành cùng Wave Digital để Launching sản phẩm.</p>
+          <div class="text-sm font-medium mb-1" data-i18n="home.about.s1.title">Doanh nghiệp tin tưởng</div>
+          <p class="text-xs text-muted-foreground mt-2" data-i18n="home.about.s1.desc">Các thương hiệu Việt và quốc tế đã đồng hành cùng Wave Digital để Launching sản phẩm.</p>
         </div>
         <div class="rounded-xl p-6 transition-all hover:border-foreground/30 bg-card border border-border">
           <div class="text-5xl font-bold mb-2 tracking-tight">30<span class="text-muted-foreground"> ngày</span></div>
-          <div class="text-sm font-medium mb-1">Trung bình một dự án</div>
-          <p class="text-xs text-muted-foreground mt-2">Từ ý tưởng đến khi sản phẩm chính thức ra mắt thị trường.</p>
+          <div class="text-sm font-medium mb-1" data-i18n="home.about.s2.title">Trung bình một dự án</div>
+          <p class="text-xs text-muted-foreground mt-2" data-i18n="home.about.s2.desc">Từ ý tưởng đến khi sản phẩm chính thức ra mắt thị trường.</p>
         </div>
         <div class="rounded-xl p-6 transition-all hover:border-foreground/30 bg-card border border-border">
           <div class="text-5xl font-bold mb-2 tracking-tight">60<span class="text-muted-foreground">%</span></div>
-          <div class="text-sm font-medium mb-1">Tiết kiệm chi phí</div>
-          <p class="text-xs text-muted-foreground mt-2">Trung bình so với việc thuê nhiều đối tác hoặc xây dựng đội ngũ inhouse.</p>
+          <div class="text-sm font-medium mb-1" data-i18n="home.about.s3.title">Tiết kiệm chi phí</div>
+          <p class="text-xs text-muted-foreground mt-2" data-i18n="home.about.s3.desc">Trung bình so với việc thuê nhiều đối tác hoặc xây dựng đội ngũ inhouse.</p>
         </div>
         <div class="rounded-xl p-6 transition-all hover:border-foreground/30 bg-card border border-border">
           <div class="text-5xl font-bold mb-2 tracking-tight">4.9/5</div>
-          <div class="text-sm font-medium mb-1">Đánh giá từ khách hàng</div>
-          <p class="text-xs text-muted-foreground mt-2">Mức độ hài lòng trung bình của khách hàng sau dự án.</p>
+          <div class="text-sm font-medium mb-1" data-i18n="home.about.s4.title">Đánh giá từ khách hàng</div>
+          <p class="text-xs text-muted-foreground mt-2" data-i18n="home.about.s4.desc">Mức độ hài lòng trung bình của khách hàng sau dự án.</p>
         </div>
       </div>
     </div>

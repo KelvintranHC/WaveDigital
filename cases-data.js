@@ -4,7 +4,7 @@ window.CASE_STUDIES = {
     category: 'Website chuyển đổi',
     title: 'Website Next.js chuẩn SEO cho thương hiệu du lịch',
     subtitle: 'Từ WordPress chậm đến landing chuyển đổi load dưới 1 giây',
-    image: 'https://images.shadcnspace.com/assets/shadcnspace-product/templates/atomist/atomist-01.webp',
+    image: 'assets/website-travel-topviet.png',
     client: 'Thương hiệu du lịch &amp; trải nghiệm (NDA)',
     industry: 'Du lịch / Hospitality',
     duration: '6 tuần',
